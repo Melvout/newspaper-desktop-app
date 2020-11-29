@@ -1,7 +1,7 @@
 /**
  * 
  */
-package application;
+package application.controllers;
 
 import java.io.FileWriter;
 import java.io.IOException;
@@ -38,6 +38,9 @@ import javafx.stage.Window;
 import serverConection.ConnectionManager;
 import serverConection.exceptions.ServerCommunicationError;
 
+import application.models.ArticleEditModel;
+import application.AppScenes;
+
 /**
  * @author ÁngelLucas
  *
@@ -51,7 +54,7 @@ public class ArticleEditController {
 
 
 	@FXML
-	void onImageClicked(MouseEvent event) {
+	public void onImageClicked(MouseEvent event) {
 		if (event.getClickCount() >= 2) {
 			Scene parentScene = ((Node) event.getSource()).getScene();
 			FXMLLoader loader = null;
@@ -105,7 +108,7 @@ public class ArticleEditController {
 	 * needed to save a news 
 	 * @param connection connection manager
 	 */
-	void setConnectionMannager(ConnectionManager connection) {
+	public void setConnectionMannager(ConnectionManager connection) {
 		this.connection = connection;
 		//TODO enable send and back button
 	}
@@ -114,13 +117,13 @@ public class ArticleEditController {
 	 * 
 	 * @param usr the usr to set
 	 */
-	void setUsr(User usr) {
+	public void setUsr(User usr) {
 		this.usr = usr;
 		//TODO Update UI and controls 
 		
 	}
 
-	Article getArticle() {
+	public Article getArticle() {
 		Article result = null;
 		if (this.editingArticle != null) {
 			result = this.editingArticle.getArticleOriginal();
@@ -134,7 +137,7 @@ public class ArticleEditController {
 	 * @param article
 	 *            the article to set
 	 */
-	void setArticle(Article article) {
+	public void setArticle(Article article) {
 		this.editingArticle = (article != null) ? new ArticleEditModel(article) : new ArticleEditModel(usr);
 		//TODO update UI
 	}

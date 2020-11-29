@@ -1,7 +1,7 @@
 /**
  * 
  */
-package application;
+package application.controllers;
 
 import java.io.File;
 import java.nio.file.FileSystems;
@@ -41,6 +41,8 @@ import javafx.stage.Window;
 import javafx.stage.FileChooser.ExtensionFilter;
 import serverConection.ConnectionManager;
 
+import application.models.NewsReaderModel;
+
 /**
  * @author ÁngelLucas
  *
@@ -70,11 +72,11 @@ public class NewsReaderController {
 	/**
 	 * @return the usr
 	 */
-	User getUsr() {
+	public User getUsr() {
 		return usr;
 	}
 
-	void setConnectionManager (ConnectionManager connection){
+	public void setConnectionManager (ConnectionManager connection){
 		this.newsReaderModel.setDummyData(false); //System is connected so dummy data are not needed
 		this.newsReaderModel.setConnectionManager(connection);
 		this.getData();
@@ -83,7 +85,7 @@ public class NewsReaderController {
 	/**
 	 * @param usr the usr to set
 	 */
-	void setUsr(User usr) {
+	public void setUsr(User usr) {
 		
 		this.usr = usr;
 		//Reload articles

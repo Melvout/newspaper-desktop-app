@@ -1,7 +1,7 @@
 /**
  * 
  */
-package application;
+package application.controllers;
 
 
 import application.news.Article;

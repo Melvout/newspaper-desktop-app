@@ -1,7 +1,7 @@
 /**
  * 
  */
-package application;
+package application.models;
 
 import application.news.Article;
 import application.news.Categories;
@@ -17,7 +17,7 @@ import javafx.scene.image.Image;
  * @author ÁngelLucas
  *
  */
-class ArticleEditModel {
+public class ArticleEditModel {
 	//Reference to original article. Useful for undo changes
 	private Article original;
 	//Reference to modified article
@@ -29,13 +29,13 @@ class ArticleEditModel {
 	 * - True: modified
 	 */
 	private boolean bModified = false;
-	ArticleEditModel (Article org){
+	public ArticleEditModel (Article org){
 		original = org;
 		edited = new Article (original);
 		addedChangeListener();
 	}
 	
-	ArticleEditModel (User usr){
+	public ArticleEditModel (User usr){
 		original = new Article();
 		if (usr!=null) {
 			original.setIdUser(usr.getIdUser());
@@ -52,7 +52,7 @@ class ArticleEditModel {
 	 * @return a StringPorperty of edited article abstract.
 	 * The returned value is suitable for binding
 	 */
-	StringProperty abstractTextProperty() {
+	public StringProperty abstractTextProperty() {
 			return edited.abstractTextProperty();
 	}
 
@@ -81,7 +81,7 @@ class ArticleEditModel {
 	 * @return a StringPorperty of edited article body.
 	 * The returned value is suitable for binding
 	 */
-	StringProperty bodyTextProperty(){
+	public StringProperty bodyTextProperty(){
 		return edited.bodyTextProperty();
 	}
 	
@@ -145,7 +145,7 @@ class ArticleEditModel {
 	 * This method give access to the original article
 	 * @return the original article if only if has a valid title
 	 */
-	Article getArticleOriginal(){
+	public Article getArticleOriginal(){
 		return (this.original != null &&
 				this.original.getTitle() != null &&
 				! this.original.getTitle().equals(""))? this.original : null;
@@ -155,7 +155,7 @@ class ArticleEditModel {
 	 * This method provide a copy of article body text
 	 * @return a copy of edited article body
 	 */
-	String getBodyText() {
+	public String getBodyText() {
 		return edited.getBodyText();
 	}
 	
@@ -204,7 +204,7 @@ class ArticleEditModel {
 	 * 
 	 * @return isDeleted from the edited article
 	 */
-	boolean isDeleted(){
+	public boolean isDeleted(){
 		return edited.isDeleted();
 	}
 
@@ -212,7 +212,7 @@ class ArticleEditModel {
 	 * @return a Property of edited article isDeleted.
 	 * The returned value is suitable for binding
 	 */
-	Property<Boolean> isDeletedProperty() {
+	public Property<Boolean> isDeletedProperty() {
 		return edited.isDeletedProperty();
 	}
 
@@ -229,7 +229,7 @@ class ArticleEditModel {
 	 * Change the associated image in the edited article
 	 * @param image new image for the edited article
 	 */
-	void setImage(Image image) {
+	public void setImage(Image image) {
 		edited.setImageData(image);
 		this.bModified = true;
 	}
@@ -238,7 +238,7 @@ class ArticleEditModel {
 	 * Change the associated image in the edited article
 	 * @param urlImage uri to an image. The image will be loaded
 	 */
-	void setUrlImage(String urlImage) {
+	public void setUrlImage(String urlImage) {
 		edited.setUrlImage(urlImage);
 		this.bModified = true;
 	}
@@ -251,7 +251,7 @@ class ArticleEditModel {
 	 * @return a StringPorperty of edited article title.
 	 * The returned value is suitable for binding
 	 */
-	StringProperty subtitleProperty(){
+	public StringProperty subtitleProperty(){
 		return edited.subtitleProperty();
 	}
 	
@@ -260,7 +260,7 @@ class ArticleEditModel {
 	 * @return a StringPorperty of edited article title.
 	 * The returned value is suitable for binding
 	 */
-	StringProperty titleProperty(){
+	public StringProperty titleProperty(){
 		return edited.titleProperty();
 	}
 }

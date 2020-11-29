@@ -1,7 +1,7 @@
 /**
  * 
  */
-package application;
+package application.models;
 
 
 import java.io.IOException;
@@ -25,7 +25,7 @@ import serverConection.exceptions.ServerCommunicationError;
  * @author ÁngelLucas
  *
  */
-class NewsReaderModel {
+public class NewsReaderModel {
 	/**
 	 * Observable list with all articles, needed for a ListView control
 	 */
@@ -47,7 +47,7 @@ class NewsReaderModel {
 	 */
 	private ConnectionManager connectionManager;
 
-	NewsReaderModel() {
+	public NewsReaderModel() {
 		articles = FXCollections.observableArrayList();
 		categories = FXCollections.observableArrayList();
 		loadCategories();
@@ -57,7 +57,7 @@ class NewsReaderModel {
 	 * 
 	 * @return an observable list with the articles
 	 */
-	ObservableList<Article> getArticles() {
+	public ObservableList<Article> getArticles() {
 		return articles;
 	}
 
@@ -65,7 +65,7 @@ class NewsReaderModel {
 	 * 
 	 * @return an observable list with the categories
 	 */
-	ObservableList<Categories> getCategories() {
+	public ObservableList<Categories> getCategories() {
 		return categories;
 	}
 
@@ -76,7 +76,7 @@ class NewsReaderModel {
 	 *            using this observable list, the article will appear in this
 	 *            control instantly
 	 */
-	void addArticle(Article article) {
+	public void addArticle(Article article) {
 		articles.add(article);
 	}
 
@@ -84,7 +84,7 @@ class NewsReaderModel {
 	 * Remove an article from the list and from the server
 	 * @param article to be removed
 	 */
-	void deleteArticle(Article article) {
+	public void deleteArticle(Article article) {
 	 if (articles.remove(article) && this.connectionManager != null) {
 		 //It was deleted from list
 		 //So deleted from BD
@@ -97,14 +97,14 @@ class NewsReaderModel {
 	}
 	
 
-	void setDummyData(boolean dummy) {
+	public void setDummyData(boolean dummy) {
 		this.dummyData = dummy;
 	}
 
-	ConnectionManager getConnectionManager() {
+	public ConnectionManager getConnectionManager() {
 		return this.connectionManager;
 	}
-	void setConnectionManager(ConnectionManager connectionManager) {
+	public void setConnectionManager(ConnectionManager connectionManager) {
 		this.connectionManager = connectionManager;
 	}
 
@@ -113,7 +113,7 @@ class NewsReaderModel {
 	 * all needed data will be generated. In other case the data will be
 	 * retrieved from server
 	 */
-	void retrieveData() {
+	public void retrieveData() {
 		articles.clear();
 		if (!this.dummyData) {
 			this.dataFromServer();

@@ -23,6 +23,8 @@ import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.fxml.FXMLLoader;
 
+import application.controllers.NewsReaderController;
+
 
 public class Main extends Application {
 	@Override
@@ -40,8 +42,7 @@ public class Main extends Application {
 			/*Pane root = FXMLLoader.load(getClass().getResource(
 					AppScenes.IMAGE_PICKER.getFxmlFile()));*/
 			//Code for reader main window
-			FXMLLoader loader = new FXMLLoader (getClass().getResource(
-					AppScenes.READER.getFxmlFile()));
+			FXMLLoader loader = new FXMLLoader (getClass().getResource(AppScenes.READER.getFxmlFile()));
 			Pane root = loader.load();
 			NewsReaderController controller = loader.<NewsReaderController>getController();
 		
@@ -50,18 +51,18 @@ public class Main extends Application {
 			ConnectionManager connection = new ConnectionManager(prop);
 			//Connecting as public (anonymous) for your group
 			connection.setAnonymousAPIKey(""/*Put your group API Key here*/);
-		//Login without login form:
+			//Login without login form:
 			//	connection.login("Reader2", "reader2"); //User: Reader2 and password "reader2" 
-		//    User user = new User ("Reader2", 
-		//	Integer.parseInt(connection.getIdUser()));
-		//	controller.setUsr(user);
+			//    User user = new User ("Reader2", 
+			//	Integer.parseInt(connection.getIdUser()));
+			//	controller.setUsr(user);
 			controller.setConnectionManager(connection);		
 			
 			//end code for main window reader
 			
 		
 			Scene scene = new Scene(root);
-			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+			scene.getStylesheets().add(getClass().getResource("/resources/application.css").toExternalForm());
 			primaryStage.initStyle(StageStyle.UNDECORATED);
 			primaryStage.setScene(scene);
 			primaryStage.show();

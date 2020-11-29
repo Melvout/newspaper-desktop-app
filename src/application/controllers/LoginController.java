@@ -1,9 +1,10 @@
-package application;
+package application.controllers;
 
 
 import application.news.User;
 
 import serverConection.ConnectionManager;
+import application.models.LoginModel;
 
 
 

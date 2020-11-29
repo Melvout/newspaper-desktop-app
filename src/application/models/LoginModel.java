@@ -1,4 +1,4 @@
-package application;
+package application.models;
 
 import java.util.HashMap;
 import java.util.logging.Level;
@@ -15,7 +15,7 @@ import serverConection.exceptions.AuthenticationError;
  * @author agonzalez
  *
  */
-class LoginModel {
+public class LoginModel {
 	/**
 	 * Map for authorized users. "User:pass" is the key for this map
 	 * This map is only used with dummy data
@@ -29,7 +29,7 @@ class LoginModel {
 	 * The ModelManager is used to communicate with articles server
 	 */
 	private ConnectionManager connectionManager;
-	LoginModel(){
+	public LoginModel(){
 		//Dummy data for test
 		String [] login = {"Reader1","Reader2","Admin1"};
 		String []passwd = {"reader1","reader2","admin1"};
@@ -46,14 +46,14 @@ class LoginModel {
 	
 
 	
-	void setDummyData(boolean dummy){
+	public void setDummyData(boolean dummy){
 		this.dummyData = dummy;
 	}
 	/**
 	 * Sect the connection manager. Connection manager is needed for using real data 
 	 * @param connection connection to be used in the login process 
 	 */
-	void setConnectionManager(ConnectionManager connection) {
+	public void setConnectionManager(ConnectionManager connection) {
 		this.connectionManager = connection;
 		this.setDummyData(false);
 	}

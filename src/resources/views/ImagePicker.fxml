@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ImagePickerController">
+<AnchorPane prefHeight="400.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controllers.ImagePickerController">
    <children>
       <TextField fx:id="idImageURL" layoutX="21.0" layoutY="33.0" prefHeight="35.0" prefWidth="255.0" promptText="Image URL" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="29.0" AnchorPane.topAnchor="33.0">
          <font>

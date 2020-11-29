@@ -9,20 +9,18 @@ package application;
  *
  */
 public enum AppScenes {
- LOGIN("Login.fxml"), READER("NewsReader.fxml"), 
- NEWS_DETAILS ("ArticleDetails.fxml"),
- EDITOR("ArticleEdit.fxml"), ADMIN("AdminNews.fxml")
-		 ,IMAGE_PICKER("ImagePicker.fxml")
-		 /*,IMAGE_PICKER("ImagePickerMaterailDesign.fxml")*/; 
- private String fxmlFile;
- 
- private AppScenes (String file){
-	 this.fxmlFile = file;
- }
- 
- public String getFxmlFile()
- {
-	 return this.fxmlFile;
- }
+	LOGIN("/resources/views/Login.fxml"), 
+	READER("/resources/views/NewsReader.fxml"), 
+	NEWS_DETAILS ("/resources/views/ArticleDetails.fxml"),
+	EDITOR("/resources/views/ArticleEdit.fxml"), 
+	ADMIN("/resources/views/AdminNews.fxml"),
+	IMAGE_PICKER("/resources/views/ImagePicker.fxml")
+	/*,IMAGE_PICKER("/resources/views/ImagePickerMaterailDesign.fxml")*/; 
+	
+	private String fxmlFile;
+	
+	private AppScenes (String file){ this.fxmlFile = file; }
+	 
+	public String getFxmlFile(){ return this.fxmlFile; }
  
 }
