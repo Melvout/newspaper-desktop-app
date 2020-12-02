@@ -1,6 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.web.WebView?>
 
-<AnchorPane prefHeight="400.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controllers.NewsReaderController">
+<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controllers.NewsReaderController">
+   <children>
+      <Label fx:id="articleTitle" alignment="CENTER" layoutX="221.0" layoutY="165.0" prefHeight="40.0" prefWidth="164.0" text="Label" textAlignment="CENTER">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <ListView fx:id="articlesList" layoutX="23.0" layoutY="52.0" onMouseClicked="#articleSelected" prefHeight="266.0" prefWidth="151.0" />
+      <ImageView fx:id="articleImage" fitHeight="123.0" fitWidth="174.0" layoutX="227.0" layoutY="30.0" pickOnBounds="true" preserveRatio="true" />
+      <WebView fx:id="articleBody" layoutX="192.0" layoutY="205.0" prefHeight="363.0" prefWidth="582.0" />
+   </children>
 </AnchorPane>

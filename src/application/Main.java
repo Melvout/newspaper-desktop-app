@@ -42,6 +42,7 @@ public class Main extends Application {
 			/*Pane root = FXMLLoader.load(getClass().getResource(
 					AppScenes.IMAGE_PICKER.getFxmlFile()));*/
 			//Code for reader main window
+			
 			FXMLLoader loader = new FXMLLoader (getClass().getResource(AppScenes.READER.getFxmlFile()));
 			Pane root = loader.load();
 			NewsReaderController controller = loader.<NewsReaderController>getController();
@@ -57,13 +58,15 @@ public class Main extends Application {
 			//	Integer.parseInt(connection.getIdUser()));
 			//	controller.setUsr(user);
 			controller.setConnectionManager(connection);		
+
+	
 			
 			//end code for main window reader
 			
 		
 			Scene scene = new Scene(root);
 			scene.getStylesheets().add(getClass().getResource("/resources/application.css").toExternalForm());
-			primaryStage.initStyle(StageStyle.UNDECORATED);
+			primaryStage.initStyle(StageStyle.DECORATED);
 			primaryStage.setScene(scene);
 			primaryStage.show();
 		} catch(AuthenticationError e) {
