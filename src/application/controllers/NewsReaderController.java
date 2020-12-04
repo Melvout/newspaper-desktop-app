@@ -27,6 +27,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
@@ -48,7 +49,8 @@ import javafx.stage.StageStyle;
 import javafx.stage.Window;
 import javafx.stage.FileChooser.ExtensionFilter;
 import serverConection.ConnectionManager;
-
+import application.AppScenes;
+import application.Main;
 import application.models.NewsReaderModel;
 
 
@@ -70,17 +72,44 @@ public class NewsReaderController {
 	@FXML
 	private WebView articleBody;
 
+	private Pane root;
+
 	//TODO add attributes and methods as needed
 
-	public NewsReaderController() {
+	public NewsReaderController(){		
 		//TODO
 		//Uncomment next sentence to use data from server instead dummy data
 		//newsReaderModel.setDummyDate(false);
 		//Get text Label
+
+		try{
+			FXMLLoader loader = new FXMLLoader(getClass().getResource(AppScenes.READER.getFxmlFile()));
+			loader.setController(this);
+			root = loader.load();
+			
+		}catch( IOException e){
+			e.printStackTrace();
+		}
+	}
+
+	public Pane getContent(){
+		return root;
+	}
+
+	@FXML
+	public void openDetailsPage(ActionEvent event){
+		if(this.articlesList.getSelectionModel().getSelectedItem() != null){
+			ArticleDetailsController articleDetailsController = new ArticleDetailsController(this);
+			articleDetailsController.setArticle(this.articlesList.getSelectionModel().getSelectedItem());
+			
+
+
+			Button sourceButton = (Button)event.getSource();
+			sourceButton.getScene().setRoot(articleDetailsController.getContent());
+		}
 	}
 
 	public void initialize(){
-		articleTitle.setText("Ceci est un test.");
 		getData();
 	}
 
