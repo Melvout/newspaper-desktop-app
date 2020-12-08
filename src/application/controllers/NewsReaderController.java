@@ -106,7 +106,6 @@ public class NewsReaderController {
 			sourceButton.getScene().setRoot(articleDetailsController.getContent());
 		}
 	}
-b
 	public void initialize(){
 		getData();
 	}
