@@ -1,1 +1,22 @@
 /* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
+.button {
+    -fx-background-color: #1A67E3;
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 15px;
+}
+
+.btn-icon {
+    -fill: #1A67E3;
+    -size: 24;
+    -fx-min-height: -size;
+    -fx-min-width: -size;
+    -fx-max-height: -size;
+    -fx-max-width: -size;
+    -fx-shape: "M0 0h24v24H0V0z M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6 1.41-1.41z"
+}
+
+.title {
+    -fx-font-size: 44px;
+    -fx-text-fill: #010405;
+    -fx-font-weight: bold;
+}
