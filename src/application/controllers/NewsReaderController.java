@@ -86,7 +86,6 @@ public class NewsReaderController {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource(AppScenes.READER.getFxmlFile()));
 			loader.setController(this);
 			root = loader.load();
-			
 		}catch( IOException e){
 			e.printStackTrace();
 		}
@@ -99,16 +98,15 @@ public class NewsReaderController {
 	@FXML
 	public void openDetailsPage(ActionEvent event){
 		if(this.articlesList.getSelectionModel().getSelectedItem() != null){
+
 			ArticleDetailsController articleDetailsController = new ArticleDetailsController(this);
 			articleDetailsController.setArticle(this.articlesList.getSelectionModel().getSelectedItem());
 			
-
-
 			Button sourceButton = (Button)event.getSource();
 			sourceButton.getScene().setRoot(articleDetailsController.getContent());
 		}
 	}
-
+b
 	public void initialize(){
 		getData();
 	}

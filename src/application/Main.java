@@ -28,13 +28,9 @@ import application.controllers.NewsReaderController;
 
 public class Main extends Application {
 
-	public static Stage parentWindow;
-
 	@Override
 	public void start(Stage primaryStage){
 	
-		parentWindow = primaryStage;
-
 		NewsReaderController newsReaderController = new NewsReaderController();
 		
 		//Create properties for server connection
@@ -51,7 +47,6 @@ public class Main extends Application {
 		//controller.setUsr(user);
 
 		Pane root = newsReaderController.getContent();
-
 		Scene scene = new Scene(root);
 		primaryStage.setScene(scene);
 		primaryStage.setTitle("News article reader");
