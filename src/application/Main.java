@@ -1,32 +1,14 @@
 package application;
 
-import java.io.IOException;
-import java.util.List;
 import java.util.Properties;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
-//import org.omg.CORBA.portable.InputStream;
-
-import application.news.Article;
-import application.news.Categories;
 import javafx.application.Application;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 import serverConection.ConnectionManager;
-import serverConection.exceptions.AuthenticationError;
-import serverConection.exceptions.ServerCommunicationError;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
-import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import application.controllers.ArticleDetailsController;
 import application.controllers.NewsReaderController;
 
-
-public class Main extends Application {
+public class Main extends Application{
 
 	@Override
 	public void start(Stage primaryStage){

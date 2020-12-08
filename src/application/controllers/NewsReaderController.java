@@ -3,57 +3,22 @@
  */
 package application.controllers;
 
-import java.io.File;
 import java.io.IOException;
-import java.net.URL;
-import java.nio.file.FileSystems;
-import java.nio.file.Path;
-import java.util.function.Predicate;
-
-import javax.imageio.ImageIO;
-
 import application.news.Article;
-import application.news.Categories;
 import application.news.User;
-import application.utils.JsonArticle;
-import application.utils.exceptions.ErrorMalFormedArticle;
-import javafx.application.Platform;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
-import javafx.collections.transformation.FilteredList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Scene;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
-import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
-import javafx.scene.control.Alert.AlertType;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
-import javafx.scene.text.Text;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
-import javafx.stage.FileChooser;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
-import javafx.stage.StageStyle;
-import javafx.stage.Window;
-import javafx.stage.FileChooser.ExtensionFilter;
 import serverConection.ConnectionManager;
 import application.AppScenes;
-import application.Main;
 import application.models.NewsReaderModel;
-
-
 
 /**
  * @author ÁngelLucas
@@ -74,7 +39,6 @@ public class NewsReaderController {
 
 	private Pane root;
 
-	//TODO add attributes and methods as needed
 
 	public NewsReaderController(){		
 		//TODO
@@ -91,11 +55,16 @@ public class NewsReaderController {
 		}
 	}
 
+	public void initialize(){
+		getData();
+	}
+
 	public Pane getContent(){
 		return root;
 	}
 
 	@FXML
+	/* Method to go to the details page of a specific article */
 	public void openDetailsPage(ActionEvent event){
 		if(this.articlesList.getSelectionModel().getSelectedItem() != null){
 
@@ -106,9 +75,13 @@ public class NewsReaderController {
 			sourceButton.getScene().setRoot(articleDetailsController.getContent());
 		}
 	}
-	public void initialize(){
-		getData();
+
+	@FXML
+	public void editArticle(ActionEvent event){
+		ArticleEditController articleEditController = new ArticleEditController(this);
+		//TODO : pass article
 	}
+
 
 	@FXML
 	/* Method called when the user click on one of the article in the list. */
@@ -119,10 +92,7 @@ public class NewsReaderController {
 
 		WebEngine webEngine = articleBody.getEngine();
 		webEngine.loadContent(articleSelected.getBodyText());
-	
 	}
-
-		
 
 	private void getData() {
 		//TODO retrieve data and update UI
