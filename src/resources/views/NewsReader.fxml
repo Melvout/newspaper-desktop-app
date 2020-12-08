@@ -9,7 +9,7 @@
 <?import javafx.scene.web.WebView?>
 
 <AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1"
-            xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controllers.NewsReaderController">
+            xmlns:fx="http://javafx.com/fxml/1">
    <Label fx:id="articleTitle" alignment="TOP_LEFT" layoutX="304.0" layoutY="30.0" lineSpacing="1.1"
           prefHeight="169.0" prefWidth="221.0" styleClass="title" stylesheets="@../application.css"
           text="Title" wrapText="true" />
@@ -17,7 +17,7 @@
                 onMouseClicked="#articleSelected" prefHeight="354.0" prefWidth="256.0" />
    <ImageView fx:id="articleImage" fitHeight="169.0" fitWidth="239.0" layoutX="537.0" layoutY="30.0"
               pickOnBounds="true" preserveRatio="true" />
-   <WebView fx:id="articleBody" layoutX="307.0" layoutY="220.0" 
+   <WebView fx:id="articleBody" layoutX="307.0" layoutY="220.0"
             prefHeight="348.0" prefWidth="467.0" />
    <JFXButton id="btn_article_details" fx:id="changeScene" layoutX="133.0" layoutY="402.0"
               onAction="#openDetailsPage" prefHeight="44.0" prefWidth="148.0" styleClass="button"

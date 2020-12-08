@@ -6,13 +6,13 @@
 }
 
 .btn-icon {
-    -icon-paint: #1A67E3;
+    -fill: #1A67E3;
     -size: 24;
     -fx-min-height: -size;
     -fx-min-width: -size;
     -fx-max-height: -size;
     -fx-max-width: -size;
-    -shape: "<svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="css-i6dzq1"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>"
+    -fx-shape: "M0 0h24v24H0V0z M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6 1.41-1.41z"
 }
 
 .title {

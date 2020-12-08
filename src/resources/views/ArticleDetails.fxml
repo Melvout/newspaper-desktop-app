@@ -5,12 +5,14 @@
 <?import javafx.scene.layout.AnchorPane?>
 
 <AnchorPane prefHeight="410.0" prefWidth="550.0"
-            xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="application.controllers.ArticleDetailsController">
+            xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+
+
+      <JFXButton layoutX="25.0" layoutY="30.0" onAction="#backMainMenu"
+                 styleClass="btn-icon" stylesheets="@../application.css" />
 
       <Label fx:id="articleTitle"
              alignment="TOP_LEFT" layoutX="25.0" layoutY="76.0" prefHeight="17.0" prefWidth="497.0"
              styleClass="title" stylesheets="@../application.css" text="Title" />
-      <JFXButton layoutX="25.0" layoutY="30.0" onAction="#backMainMenu" styleClass="button" stylesheets="@../application.css" text="Back" />
 
 </AnchorPane>
