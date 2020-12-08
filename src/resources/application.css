@@ -1,1 +1,22 @@
 /* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
+.button {
+    -fx-background-color: #1A67E3;
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 15px;
+}
+
+.btn-icon {
+    -icon-paint: #1A67E3;
+    -size: 24;
+    -fx-min-height: -size;
+    -fx-min-width: -size;
+    -fx-max-height: -size;
+    -fx-max-width: -size;
+    -shape: "<svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="css-i6dzq1"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>"
+}
+
+.title {
+    -fx-font-size: 44px;
+    -fx-text-fill: #010405;
+    -fx-font-weight: bold;
+}
