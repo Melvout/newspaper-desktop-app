@@ -6,6 +6,8 @@ package application.controllers;
 import java.io.IOException;
 import application.news.Article;
 import application.news.User;
+import application.utils.JsonArticle;
+import application.utils.exceptions.ErrorMalFormedArticle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -41,11 +43,6 @@ public class NewsReaderController {
 
 
 	public NewsReaderController(){		
-		//TODO
-		//Uncomment next sentence to use data from server instead dummy data
-		//newsReaderModel.setDummyDate(false);
-		//Get text Label
-
 		try{
 			FXMLLoader loader = new FXMLLoader(getClass().getResource(AppScenes.READER.getFxmlFile()));
 			loader.setController(this);
@@ -56,7 +53,7 @@ public class NewsReaderController {
 	}
 
 	public void initialize(){
-		getData();
+		//getData();
 	}
 
 	public Pane getContent(){
@@ -69,7 +66,10 @@ public class NewsReaderController {
 		if(this.articlesList.getSelectionModel().getSelectedItem() != null){
 
 			ArticleDetailsController articleDetailsController = new ArticleDetailsController(this);
-			articleDetailsController.setArticle(this.articlesList.getSelectionModel().getSelectedItem());
+			
+			articleDetailsController.setArticle(getCurrentFullArticle());
+			
+			//articleDetailsController.setArticle(this.articlesList.getSelectionModel().getSelectedItem());
 			
 			Button sourceButton = (Button)event.getSource();
 			sourceButton.getScene().setRoot(articleDetailsController.getContent());
@@ -90,7 +90,6 @@ public class NewsReaderController {
 		}
 	}
 
-
 	@FXML
 	/* Method called when the user click on one of the article in the list. */
 	private void articleSelected(){
@@ -99,14 +98,31 @@ public class NewsReaderController {
 		articleImage.setImage(articleSelected.getImageData());
 
 		WebEngine webEngine = articleBody.getEngine();
-		webEngine.loadContent(articleSelected.getBodyText());
+		webEngine.loadContent(articleSelected.getAbstractText());
 	}
 
-	private void getData() {
+	public void getData() {
 		//TODO retrieve data and update UI
 		//The method newsReaderModel.retrieveData() can be used to retrieve data  
 		newsReaderModel.retrieveData();
 		articlesList.setItems(newsReaderModel.getArticles());
+	}
+
+	/* Method to get full details of the currently selected article */
+	public Article getCurrentFullArticle(){
+		String idArticleToDisplay = Integer.toString(articlesList.getSelectionModel().getSelectedItem().getIdArticle());
+		Article articleToDisplay = null;
+		try {
+			articleToDisplay = JsonArticle.jsonToArticle(this.newsReaderModel.getConnectionManager().getFullArticle(idArticleToDisplay));
+		} 
+		catch (ErrorMalFormedArticle e){
+			e.printStackTrace();
+		}
+		return articleToDisplay;		
+	}
+
+	public void addArticle(Article articleToAdd){
+		this.newsReaderModel.addArticle(articleToAdd);
 	}
 
 	/**
@@ -116,21 +132,19 @@ public class NewsReaderController {
 		return usr;
 	}
 
-	public void setConnectionManager (ConnectionManager connection){
-		this.newsReaderModel.setDummyData(false); //System is connected so dummy data are not needed
-		this.newsReaderModel.setConnectionManager(connection);
-		this.getData();
-	}
-	
 	/**
 	 * @param usr the usr to set
 	 */
 	public void setUsr(User usr) {
-		
 		this.usr = usr;
 		//Reload articles
-		this.getData();
 		//TODO Update UI
+	}
+
+	public void setConnectionManager (ConnectionManager connection){
+		this.newsReaderModel.setDummyData(false); //System is connected so dummy data are not needed
+		this.newsReaderModel.setConnectionManager(connection);
+		this.getData();
 	}
 
 

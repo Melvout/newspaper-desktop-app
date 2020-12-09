@@ -224,11 +224,24 @@ public class ConnectionManager {
 		HttpURLConnection connection =  this.getHttpURLConection(request, parameters,
 				"GET", "application/x-www-form-urlencoded; charset=UTF-8"); 
 		if(connection!=null){//IF OK
-			try (InputStream is = connection.getInputStream();
-					JsonReader rdr = Json.createReader(is)) {//try 2
+			try (InputStream is = connection.getInputStream(); JsonReader rdr = Json.createReader(is)) {//try 2
+
 				JsonArray arryObj = rdr.readArray();
 				System.out.println("Leido: "+arryObj.size());
-				for (int i = 0; i< arryObj.size(); i++) {//for
+	
+				for(int i=0; i < arryObj.size(); i++){
+					try{
+						Article article;
+						article = JsonArticle.jsonToArticle(arryObj.getJsonObject(i));
+						result.add(article);
+					}
+					catch(ErrorMalFormedArticle e){
+						Logger.getGlobal().log(Level.SEVERE, e.getMessage());
+					}
+				}
+				/*
+				for (int i = 0; i< arryObj.size(); i++) {
+
 					JsonObject obj = arryObj.getJsonObject(i);
 					//System.out.println("element read ("+i+"): "+obj.toString());	
 					try {
@@ -239,12 +252,11 @@ public class ConnectionManager {
 							article = JsonArticle.jsonToArticle(obj);
 							result.add(article);	
 						}
-						
 					} catch (ErrorMalFormedArticle e) {
 						// TODO Auto-generated catch block
 						Logger.getGlobal().log(Level.SEVERE, e.getMessage());
 					}
-				}//for
+				}*/
 
 			}//Try 2
 			catch (IOException e) {
@@ -261,7 +273,7 @@ public class ConnectionManager {
 	 * @param idArticle the id for article to retrieve
 	 * @return a jsonObject with the article data
 	 */
-	private JsonObject getFullArticle(String idArticle) {
+	public JsonObject getFullArticle(String idArticle) {
 		String parameters =  "";
 		String request = serviceUrl + "article/"+idArticle;
 		HttpURLConnection connection =  this.getHttpURLConection(request, parameters,

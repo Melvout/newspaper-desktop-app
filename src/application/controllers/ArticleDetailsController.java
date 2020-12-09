@@ -76,9 +76,12 @@ public class ArticleDetailsController {
 		 */
 		void setArticle(Article article) {
 			this.article = article;
+
+			
 			
 			//TODO complete this method
 
+			System.out.println(">>> " + this.article.getBodyText());
 			articleTitle.setText(this.article.getTitle());
 		}
 }

@@ -113,8 +113,11 @@ public class JsonArticle {
 		result = new Article(abstractText, bodyText, title, null, idUser, null, category);
 		result.setSubtitle(subtitle);
 		result.setDeleted(isDeleted);
+
 		// Be careful. If key dosen't exists a null pointer exception will be raised
-		String imageData = articleData.getString(keys.get("Image"), null);
+		String imageData = articleData.getString(keys.get("thumbnail"), null);
+		//String imageData = articleData.getString(keys.get("Image"), null);  // I changed this
+
 		// Sometimes server return "null" as imageData -> a bug server
 		if (imageData != null && !imageData.equals("null")) {
 			BufferedImage img = StringToBufferedImage(imageData);

@@ -18,6 +18,7 @@ import javafx.scene.image.Image;
  *
  */
 public class ArticleEditModel {
+
 	//Reference to original article. Useful for undo changes
 	private Article original;
 	//Reference to modified article
@@ -29,7 +30,7 @@ public class ArticleEditModel {
 	 * - True: modified
 	 */
 	private boolean bModified = false;
-	
+
 	public ArticleEditModel (Article org){
 		original = org;
 		edited = new Article (original);
@@ -41,7 +42,6 @@ public class ArticleEditModel {
 		if (usr!=null) {
 			original.setIdUser(usr.getIdUser());
 		}
-			
 		edited = new Article (original);
 		addedChangeListener();
 	}
@@ -63,18 +63,12 @@ public class ArticleEditModel {
 	 *  there is a change on edited article
 	 */
 	private void addedChangeListener(){
- 	 this.edited.abstractTextProperty().addListener(
-				 (observable, oldvalue, newvalue) ->this.bModified =  true);
- 	this.edited.bodyTextProperty().addListener(
-			 (observable, oldvalue, newvalue) ->this.bModified =  true);
- 	/*this.edited.isPublishProperty().addListener(
-			 (observable, oldvalue, newvalue) ->this.bModified =  true);*/
- 	this.edited.isDeletedProperty().addListener(
-			 (observable, oldvalue, newvalue) ->this.bModified =  true);
- 	this.edited.titleProperty().addListener(
-			 (observable, oldvalue, newvalue) ->this.bModified =  true);
- 	this.edited.subtitleProperty().addListener(
-			 (observable, oldvalue, newvalue) ->this.bModified =  true);
+		this.edited.abstractTextProperty().addListener( (observable, oldvalue, newvalue) -> this.bModified =  true);
+ 		this.edited.bodyTextProperty().addListener( (observable, oldvalue, newvalue) ->this.bModified =  true);
+ 		/*this.edited.isPublishProperty().addListener( (observable, oldvalue, newvalue) ->this.bModified =  true);*/
+ 		this.edited.isDeletedProperty().addListener( (observable, oldvalue, newvalue) ->this.bModified =  true);
+ 		this.edited.titleProperty().addListener( (observable, oldvalue, newvalue) ->this.bModified =  true);
+ 		this.edited.subtitleProperty().addListener( (observable, oldvalue, newvalue) ->this.bModified =  true);
 	}
 	
 	/**

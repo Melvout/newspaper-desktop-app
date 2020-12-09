@@ -24,6 +24,7 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.web.HTMLEditor;
@@ -53,11 +54,13 @@ public class ArticleEditController {
 	@FXML
 	TextField subtitleInput;
 	@FXML
-	ComboBox<String> categoryInput;
+	ComboBox<Categories> categoryInput;
 	@FXML
 	HTMLEditor abstractInput;
 	@FXML
 	HTMLEditor bodyInput;
+	@FXML
+	ImageView imageInput;
 
 	public ArticleEditController(NewsReaderController newsReaderController) {
 
@@ -73,7 +76,8 @@ public class ArticleEditController {
 	}
 
 	public void initialize() {
-		System.out.println("allo2");
+		System.out.println("Entering editArticle scene...");
+		this.categoryInput.getItems().addAll(Categories.ALL, Categories.ECONOMY, Categories.INTERNATIONAL, Categories.NATIONAL, Categories.SPORTS, Categories.TECHNOLOGY);
 	}
 
 	public Pane getContent() {
@@ -82,11 +86,16 @@ public class ArticleEditController {
 
 	@FXML
 	public void saveArticleToServer(){
+		this.editingArticle.setCategory(this.categoryInput.getSelectionModel().getSelectedItem());
+		this.editingArticle.titleProperty().set("BLABLA22");
+		this.editingArticle.commit();
 		send();
 	}
 
 	@FXML
 	public void backMainMenu(ActionEvent event) {
+		System.out.println("Leaving editArticle scene...");
+		this.newsReaderController.addArticle(this.editingArticle.getArticleOriginal());
 		Button sourceButton = (Button) event.getSource();
 		sourceButton.getScene().setRoot(newsReaderController.getContent());
 	}
@@ -123,7 +132,7 @@ public class ArticleEditController {
 	}
 
 	/**
-	 * Send and article to server, Title and category must be defined and category
+	 * Send an article to server, Title and category must be defined and category
 	 * must be different to ALL
 	 * 
 	 * @return true if the article has been saved
@@ -169,10 +178,8 @@ public class ArticleEditController {
 	 * 
 	 * @param usr the usr to set
 	 */
-	public void setUsr(User usr) {
-		this.usr = usr;
-		System.out.println(">>> " + this.usr.getIdUser());
-		
+	public void setUsr(User usr){
+		this.usr = usr;		
 	}
 
 	/**
@@ -188,7 +195,10 @@ public class ArticleEditController {
 			//TODO update UI
 			this.titleInput.setText(this.editingArticle.getTitle());
 			this.subtitleInput.setText(this.editingArticle.getSubtitle());
-			
+			this.categoryInput.getSelectionModel().select(this.editingArticle.getCategory());
+			this.imageInput.setImage(this.editingArticle.getArticleOriginal().getImageData());
+			this.bodyInput.setHtmlText(this.editingArticle.getBodyText());
+			this.abstractInput.setHtmlText(this.editingArticle.getAbstractText());
 		}
 	}
 	
