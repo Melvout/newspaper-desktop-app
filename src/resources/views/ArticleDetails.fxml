@@ -5,12 +5,12 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="410.0" prefWidth="550.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
 
 
       <JFXButton layoutX="25.0" layoutY="30.0" onAction="#backMainMenu" styleClass="btn-icon" stylesheets="@../application.css" />
 
       <Label fx:id="articleTitle" alignment="TOP_LEFT" layoutX="25.0" layoutY="76.0" prefHeight="17.0" prefWidth="497.0" styleClass="title" stylesheets="@../application.css" text="Title" />
-   <ImageView fx:id="articleImage" fitHeight="150.0" fitWidth="200.0" layoutX="263.0" layoutY="34.0" pickOnBounds="true" preserveRatio="true" />
+   <ImageView fx:id="articleImage" fitHeight="206.0" fitWidth="309.0" layoutX="392.0" layoutY="30.0" pickOnBounds="true" preserveRatio="true" />
 
 </AnchorPane>
