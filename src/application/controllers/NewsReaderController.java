@@ -41,6 +41,8 @@ public class NewsReaderController {
 
 	private Pane root;
 
+	private Article articleSelected;
+
 
 	public NewsReaderController(){		
 		try{
@@ -83,7 +85,10 @@ public class NewsReaderController {
 			
 			articleEditController.setConnectionMannager(this.newsReaderModel.getConnectionManager());
 			articleEditController.setUsr(this.usr);
-			articleEditController.setArticle(this.articlesList.getSelectionModel().getSelectedItem());
+
+			articleEditController.setArticle(getCurrentFullArticle());
+
+			clearUI();
 
 			Button sourceButton = (Button)event.getSource();
 			sourceButton.getScene().setRoot(articleEditController.getContent());
@@ -93,17 +98,25 @@ public class NewsReaderController {
 	@FXML
 	/* Method called when the user click on one of the article in the list. */
 	private void articleSelected(){
-		Article articleSelected = this.articlesList.getSelectionModel().getSelectedItem();
+		this.articleSelected = this.articlesList.getSelectionModel().getSelectedItem();
+		updateUI();
+	}
+
+	private void updateUI(){
 		articleTitle.setText(articleSelected.getTitle());
 		articleImage.setImage(articleSelected.getImageData());
-
 		WebEngine webEngine = articleBody.getEngine();
 		webEngine.loadContent(articleSelected.getAbstractText());
 	}
 
-	public void getData() {
-		//TODO retrieve data and update UI
-		//The method newsReaderModel.retrieveData() can be used to retrieve data  
+	private void clearUI(){
+		articleTitle.setText("");
+		articleImage.setImage(null);
+		WebEngine webEngine = articleBody.getEngine();
+		webEngine.loadContent("");
+	}
+
+	public void getData(){
 		newsReaderModel.retrieveData();
 		articlesList.setItems(newsReaderModel.getArticles());
 	}

@@ -87,7 +87,7 @@ public class ArticleEditController {
 	@FXML
 	public void saveArticleToServer(){
 		this.editingArticle.setCategory(this.categoryInput.getSelectionModel().getSelectedItem());
-		this.editingArticle.titleProperty().set("Test article");
+		this.editingArticle.titleProperty().set(this.titleInput.getText());
 		this.editingArticle.commit();
 		send();
 	}
@@ -97,7 +97,7 @@ public class ArticleEditController {
 		System.out.println("Leaving editArticle scene...");
 
 		this.newsReaderController.getData();
-
+		
 		Button sourceButton = (Button) event.getSource();
 		sourceButton.getScene().setRoot(newsReaderController.getContent());
 	}
@@ -194,14 +194,17 @@ public class ArticleEditController {
 		if( this.usr != null ){
 			this.editingArticle = (article != null) ? new ArticleEditModel(article) : new ArticleEditModel(usr);
 
-			//TODO update UI
-			this.titleInput.setText(this.editingArticle.getTitle());
-			this.subtitleInput.setText(this.editingArticle.getSubtitle());
-			this.categoryInput.getSelectionModel().select(this.editingArticle.getCategory());
-			this.imageInput.setImage(this.editingArticle.getArticleOriginal().getImageData());
-			this.bodyInput.setHtmlText(this.editingArticle.getBodyText());
-			this.abstractInput.setHtmlText(this.editingArticle.getAbstractText());
+			updateUI();
 		}
+	}
+
+	public void updateUI(){
+		this.titleInput.setText(this.editingArticle.getTitle());
+		this.subtitleInput.setText(this.editingArticle.getSubtitle());
+		this.categoryInput.getSelectionModel().select(this.editingArticle.getCategory());
+		this.imageInput.setImage(this.editingArticle.getArticleOriginal().getImageData());
+		this.bodyInput.setHtmlText(this.editingArticle.getBodyText());
+		this.abstractInput.setHtmlText(this.editingArticle.getAbstractText());
 	}
 	
 	/**
