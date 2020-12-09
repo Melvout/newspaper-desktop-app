@@ -13,6 +13,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 
 /**
@@ -28,6 +29,8 @@ public class ArticleDetailsController {
 
 		@FXML
 		private Label articleTitle;
+		@FXML
+		private ImageView articleImage;
 
 		private final NewsReaderController newsReaderController;
 		
@@ -83,5 +86,6 @@ public class ArticleDetailsController {
 
 			System.out.println(">>> " + this.article.getBodyText());
 			articleTitle.setText(this.article.getTitle());
+			articleImage.setImage(this.article.getImageData());
 		}
 }

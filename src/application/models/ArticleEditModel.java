@@ -238,9 +238,6 @@ public class ArticleEditModel {
 		this.bModified = true;
 	}
 
-
-
-	
 	/**
 	 * This method provide access to  edited article subtitle property. So, this subtitle can be modified through this property
 	 * @return a StringPorperty of edited article title.

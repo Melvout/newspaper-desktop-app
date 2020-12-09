@@ -87,7 +87,7 @@ public class ArticleEditController {
 	@FXML
 	public void saveArticleToServer(){
 		this.editingArticle.setCategory(this.categoryInput.getSelectionModel().getSelectedItem());
-		this.editingArticle.titleProperty().set("BLABLA22");
+		this.editingArticle.titleProperty().set("Test article");
 		this.editingArticle.commit();
 		send();
 	}
@@ -95,7 +95,9 @@ public class ArticleEditController {
 	@FXML
 	public void backMainMenu(ActionEvent event) {
 		System.out.println("Leaving editArticle scene...");
-		this.newsReaderController.addArticle(this.editingArticle.getArticleOriginal());
+
+		this.newsReaderController.getData();
+
 		Button sourceButton = (Button) event.getSource();
 		sourceButton.getScene().setRoot(newsReaderController.getContent());
 	}
