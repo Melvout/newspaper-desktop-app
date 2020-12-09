@@ -51,7 +51,7 @@ public class ArticleEditController {
 		this.newsReaderController = newsReaderController;
 
 		try{
-			FXMLLoader loader = new FXMLLoader(getClass().getResource(AppScenes.NEWS_DETAILS.getFxmlFile()));
+			FXMLLoader loader = new FXMLLoader(getClass().getResource(AppScenes.EDITOR.getFxmlFile()));
 			loader.setController(this);
 			root = loader.load();
 		}catch( IOException e){
@@ -60,7 +60,7 @@ public class ArticleEditController {
 	}
 
 	public void initialize(){
-		System.out.println("allo");
+		System.out.println("allo2");
 	}
 
 	public Pane getContent(){

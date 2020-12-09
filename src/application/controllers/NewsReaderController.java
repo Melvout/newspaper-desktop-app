@@ -80,6 +80,9 @@ public class NewsReaderController {
 	public void editArticle(ActionEvent event){
 		ArticleEditController articleEditController = new ArticleEditController(this);
 		//TODO : pass article
+
+		Button sourceButton = (Button)event.getSource();
+		sourceButton.getScene().setRoot(articleEditController.getContent());
 	}
 
 
