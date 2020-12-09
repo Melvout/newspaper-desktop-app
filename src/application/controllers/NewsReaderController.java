@@ -15,6 +15,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
@@ -97,9 +98,16 @@ public class NewsReaderController {
 
 	@FXML
 	/* Method called when the user click on one of the article in the list. */
-	private void articleSelected(){
+	private void articleSelected(MouseEvent event){
 		this.articleSelected = this.articlesList.getSelectionModel().getSelectedItem();
 		updateUI();
+		/* if double click on article, goes to article details */
+		if (event.getClickCount() >= 2){
+			ArticleDetailsController articleDetailsController = new ArticleDetailsController(this);
+			articleDetailsController.setArticle(getCurrentFullArticle());
+			ListView<Article> sourceButton = (ListView<Article>)event.getSource(); // I'll try to fix this 
+			sourceButton.getScene().setRoot(articleDetailsController.getContent());
+		}
 	}
 
 	private void updateUI(){

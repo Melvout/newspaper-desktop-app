@@ -112,9 +112,12 @@ public class ArticleEditController {
 				Pane root = loader.load();
 				// Scene scene = new Scene(root, 570, 420);
 				Scene scene = new Scene(root);
-				scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+
+				
+				scene.getStylesheets().add(getClass().getResource("/resources/application.css").toExternalForm());
 				Window parentStage = parentScene.getWindow();
 				Stage stage = new Stage();
+
 				stage.initOwner(parentStage);
 				stage.setScene(scene);
 				stage.initStyle(StageStyle.UNDECORATED);
@@ -124,7 +127,7 @@ public class ArticleEditController {
 				Image image = controller.getImage();
 				if (image != null) {
 					editingArticle.setImage(image);
-					// TODO Update image on UI
+					imageInput.setImage(image);
 				}
 			} catch (Exception e) {
 				e.printStackTrace();
