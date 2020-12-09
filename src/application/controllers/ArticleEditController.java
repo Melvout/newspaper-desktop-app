@@ -21,16 +21,18 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
+import javafx.scene.web.HTMLEditor;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.stage.Window;
 import serverConection.ConnectionManager;
-
-
+import serverConection.exceptions.ServerCommunicationError;
 import application.models.ArticleEditModel;
 import application.AppScenes;
 
@@ -39,41 +41,55 @@ import application.AppScenes;
  *
  */
 public class ArticleEditController {
-    private ConnectionManager connection;
+	private ConnectionManager connection;
 	private ArticleEditModel editingArticle;
 	private User usr;
-	
+
 	private Pane root;
 	private final NewsReaderController newsReaderController;
 
-	public ArticleEditController(NewsReaderController newsReaderController){
+	@FXML
+	TextField titleInput;
+	@FXML
+	TextField subtitleInput;
+	@FXML
+	ComboBox<String> categoryInput;
+	@FXML
+	HTMLEditor abstractInput;
+	@FXML
+	HTMLEditor bodyInput;
+
+	public ArticleEditController(NewsReaderController newsReaderController) {
 
 		this.newsReaderController = newsReaderController;
 
-		try{
+		try {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource(AppScenes.EDITOR.getFxmlFile()));
 			loader.setController(this);
 			root = loader.load();
-		}catch( IOException e){
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
 
-	public void initialize(){
+	public void initialize() {
 		System.out.println("allo2");
 	}
 
-	public Pane getContent(){
+	public Pane getContent() {
 		return root;
 	}
 
 	@FXML
-	public void backMainMenu(ActionEvent event){
-		Button sourceButton = (Button)event.getSource();
-		sourceButton.getScene().setRoot(newsReaderController.getContent());
+	public void saveArticleToServer(){
+		send();
 	}
 
-
+	@FXML
+	public void backMainMenu(ActionEvent event) {
+		Button sourceButton = (Button) event.getSource();
+		sourceButton.getScene().setRoot(newsReaderController.getContent());
+	}
 
 	@FXML
 	public void onImageClicked(MouseEvent event) {
@@ -97,7 +113,7 @@ public class ArticleEditController {
 				Image image = controller.getImage();
 				if (image != null) {
 					editingArticle.setImage(image);
-					//TODO Update image on UI
+					// TODO Update image on UI
 				}
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -105,25 +121,40 @@ public class ArticleEditController {
 
 		}
 	}
-	
+
 	/**
-	 * Send and article to server,
-	 * Title and category must be defined and category must be different to ALL
+	 * Send and article to server, Title and category must be defined and category
+	 * must be different to ALL
+	 * 
 	 * @return true if the article has been saved
 	 */
 	private boolean send() {
-		String titleText = null; // TODO Get article title
-		Categories category = null; //TODO Get article cateory
-		if (titleText == null || category == null || titleText.equals("") || category == Categories.ALL){
+		String titleText = this.editingArticle.getTitle();
+		Categories category = this.editingArticle.getCategory();
+
+		if (titleText == null || category == null || titleText.equals("") || category == Categories.ALL) {
 			Alert alert = new Alert(AlertType.ERROR, "Imposible send the article!! Title and categoy are mandatory", ButtonType.OK);
 			alert.showAndWait();
 			return false;
 		}
-//TODO prepare and send using connection.saveArticle( ...)
-		
+
+		try{
+			this.connection.saveArticle(this.editingArticle.getArticleOriginal());
+		} catch (ServerCommunicationError e){
+			
+			e.printStackTrace();
+		}
 		return true;
 	}
 	
+	public Article getArticle() {
+		Article result = null;
+		if (this.editingArticle != null) {
+			result = this.editingArticle.getArticleOriginal();
+		}
+		return result;
+	}
+
 	/**
 	 * This method is used to set the connection manager which is
 	 * needed to save a news 
@@ -140,16 +171,8 @@ public class ArticleEditController {
 	 */
 	public void setUsr(User usr) {
 		this.usr = usr;
-		//TODO Update UI and controls 
+		System.out.println(">>> " + this.usr.getIdUser());
 		
-	}
-
-	public Article getArticle() {
-		Article result = null;
-		if (this.editingArticle != null) {
-			result = this.editingArticle.getArticleOriginal();
-		}
-		return result;
 	}
 
 	/**
@@ -158,9 +181,15 @@ public class ArticleEditController {
 	 * @param article
 	 *            the article to set
 	 */
-	public void setArticle(Article article) {
-		this.editingArticle = (article != null) ? new ArticleEditModel(article) : new ArticleEditModel(usr);
-		//TODO update UI
+	public void setArticle(Article article){
+		if( this.usr != null ){
+			this.editingArticle = (article != null) ? new ArticleEditModel(article) : new ArticleEditModel(usr);
+
+			//TODO update UI
+			this.titleInput.setText(this.editingArticle.getTitle());
+			this.subtitleInput.setText(this.editingArticle.getSubtitle());
+			
+		}
 	}
 	
 	/**

@@ -7,26 +7,39 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.web.HTMLEditor?>
 
-<AnchorPane prefHeight="420.0" prefWidth="570.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
 
       <JFXButton layoutX="25.0" layoutY="30.0" onAction="#backMainMenu" styleClass="btn-icon" stylesheets="@../application.css" />
-      <ImageView fitHeight="111.0" fitWidth="146.0" layoutX="25.0" layoutY="66.0" pickOnBounds="true" preserveRatio="true" />
-      <TextField layoutX="294.0" layoutY="72.0" prefHeight="25.0" prefWidth="234.0" promptText="Article title" />
-      <TextField layoutX="294.0" layoutY="109.0" prefHeight="25.0" prefWidth="234.0" promptText="Article subtitle" />
-      <ComboBox layoutX="294.0" layoutY="152.0" prefWidth="150.0" />
-      <Label alignment="CENTER_RIGHT" layoutX="232.0" layoutY="71.0" prefHeight="27.0" prefWidth="53.0" text="Title">
+      <ImageView fx:id="imageInput" fitHeight="111.0" fitWidth="146.0" layoutX="115.0" layoutY="55.0" pickOnBounds="true" preserveRatio="true" />
+      <TextField fx:id="titleInput" layoutX="416.0" layoutY="61.0" prefHeight="25.0" prefWidth="322.0" promptText="Article title" />
+      <TextField fx:id="subtitleInput" layoutX="416.0" layoutY="98.0" prefHeight="25.0" prefWidth="322.0" promptText="Article subtitle" />
+      <ComboBox fx:id="categoryInput" layoutX="416.0" layoutY="141.0" prefWidth="150.0" />
+      <Label alignment="CENTER_RIGHT" layoutX="354.0" layoutY="60.0" prefHeight="27.0" prefWidth="53.0" text="Title">
          <font>
             <Font size="16.0" />
          </font>
       </Label>
-      <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="200.0" layoutY="108.0" prefHeight="27.0" prefWidth="85.0" text="Subtitle" textAlignment="RIGHT">
+      <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="322.0" layoutY="97.0" prefHeight="27.0" prefWidth="85.0" text="Subtitle" textAlignment="RIGHT">
          <font>
             <Font size="16.0" />
          </font>
       </Label>
-      <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="200.0" layoutY="151.0" prefHeight="27.0" prefWidth="85.0" text="Category" textAlignment="RIGHT">
+      <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="322.0" layoutY="140.0" prefHeight="27.0" prefWidth="85.0" text="Category" textAlignment="RIGHT">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <HTMLEditor fx:id="abstractInput" htmlText="&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body contenteditable=&quot;true&quot;&gt;&lt;/body&gt;&lt;/html&gt;" layoutX="207.0" layoutY="194.0" prefHeight="188.0" prefWidth="531.0" />
+      <HTMLEditor fx:id="bodyInput" htmlText="&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body contenteditable=&quot;true&quot;&gt;&lt;/body&gt;&lt;/html&gt;" layoutX="207.0" layoutY="386.0" prefHeight="200.0" prefWidth="531.0" />
+      <Label alignment="CENTER_RIGHT" layoutX="83.0" layoutY="275.0" prefHeight="27.0" prefWidth="68.0" text="Abstract">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER_RIGHT" layoutX="83.0" layoutY="484.0" prefHeight="27.0" prefWidth="68.0" text="Body">
          <font>
             <Font size="16.0" />
          </font>

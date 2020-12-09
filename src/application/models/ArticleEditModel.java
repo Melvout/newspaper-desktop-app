@@ -29,6 +29,7 @@ public class ArticleEditModel {
 	 * - True: modified
 	 */
 	private boolean bModified = false;
+	
 	public ArticleEditModel (Article org){
 		original = org;
 		edited = new Article (original);
