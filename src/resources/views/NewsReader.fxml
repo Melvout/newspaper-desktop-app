@@ -15,4 +15,5 @@
    <JFXButton id="btn_article_details" fx:id="changeScene" layoutX="133.0" layoutY="409.0" onAction="#openDetailsPage" prefHeight="44.0" prefWidth="148.0" styleClass="button" stylesheets="@../application.css" text="Read full article" />
    <JFXButton id="btn_article_details" fx:id="editArticle" layoutX="133.0" layoutY="471.0" onAction="#editArticle" prefHeight="44.0" prefWidth="148.0" styleClass="button" stylesheets="@../application.css" text="Edit article" />
    <JFXButton id="btn_article_details" fx:id="createArticle" layoutX="133.0" layoutY="531.0" onAction="#createArticle" prefHeight="44.0" prefWidth="148.0" styleClass="button" stylesheets="@../application.css" text="Create article" />
+   <JFXButton id="btn_article_details" fx:id="loadArticle" layoutX="133.0" layoutY="592.0" onAction="#loadArticle" prefHeight="44.0" prefWidth="148.0" styleClass="button" stylesheets="@../application.css" text="Load article" />
 </AnchorPane>

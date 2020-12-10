@@ -3,7 +3,12 @@
  */
 package application.controllers;
 
+import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+
+import javafx.stage.FileChooser;
+
 import application.news.Article;
 import application.news.User;
 import application.utils.JsonArticle;
@@ -19,6 +24,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
+import javafx.stage.Stage;
 import serverConection.ConnectionManager;
 import application.AppScenes;
 import application.models.NewsReaderModel;
@@ -43,6 +49,8 @@ public class NewsReaderController {
 	private Pane root;
 
 	private Article articleSelected;
+	final FileChooser fileChooser = new FileChooser();
+	
 
 
 	public NewsReaderController(){		
@@ -55,9 +63,7 @@ public class NewsReaderController {
 		}
 	}
 
-	public void initialize(){
-		//getData();
-	}
+	public void initialize(){ }
 
 	public Pane getContent(){
 		return root;
@@ -111,6 +117,7 @@ public class NewsReaderController {
 		}
 	}
 
+	
 	@FXML
 	/* Method called when the user click on one of the article in the list. */
 	private void articleSelected(MouseEvent event){
@@ -125,6 +132,27 @@ public class NewsReaderController {
 		}
 	}
 
+	@FXML
+	private void loadArticle(){
+		fileChooser.showOpenDialog(articleTitle.getScene().getWindow());
+	}
+
+	public ArrayList<String> listFilesForFolder(final File folder){
+
+		ArrayList<String> result = new ArrayList<String>();
+		
+		for (final File fileEntry : folder.listFiles()){
+			if (fileEntry.isDirectory()){
+				listFilesForFolder(fileEntry);
+			} else {
+				result.add(fileEntry.getName());
+				System.out.println(fileEntry.getName());
+			}
+		}
+
+		return result;
+	}
+	
 	private void updateUI(){
 		articleTitle.setText(articleSelected.getTitle());
 		articleImage.setImage(articleSelected.getImageData());

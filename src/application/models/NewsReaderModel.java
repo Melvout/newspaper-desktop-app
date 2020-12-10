@@ -96,7 +96,6 @@ public class NewsReaderModel {
 	 }
 	}
 	
-
 	public void setDummyData(boolean dummy) {
 		this.dummyData = dummy;
 	}
@@ -104,6 +103,7 @@ public class NewsReaderModel {
 	public ConnectionManager getConnectionManager() {
 		return this.connectionManager;
 	}
+	
 	public void setConnectionManager(ConnectionManager connectionManager) {
 		this.connectionManager = connectionManager;
 	}
