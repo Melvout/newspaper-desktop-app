@@ -36,7 +36,7 @@ public class ArticleDetailsController {
 		@FXML
 		private Label articleAbstract;
 		@FXML
-		private WebView body;
+		private WebView bodyText;
 
 	private final NewsReaderController newsReaderController;
 		
@@ -90,7 +90,7 @@ public class ArticleDetailsController {
 			articleTitle.setText(this.article.getTitle());
 			articleImage.setImage(this.article.getImageData());
 			articleAbstract.setText(this.article.getAbstractText());
-			WebEngine webEngine = body.getEngine();
+			WebEngine webEngine = bodyText.getEngine();
 			webEngine.loadContent(article.getBodyText());
 		}
 }

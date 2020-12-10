@@ -12,6 +12,6 @@
     <Label fx:id="articleTitle" alignment="TOP_LEFT" layoutX="25.0" layoutY="76.0" prefHeight="55.0" prefWidth="419.0" styleClass="title" stylesheets="@../application.css" text="Title" />
     <ImageView fx:id="articleImage" fitHeight="206.0" fitWidth="309.0" layoutX="460.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true" />
     <Label fx:id="articleAbstract" alignment="TOP_LEFT" layoutX="35.0" layoutY="149.0" prefHeight="89.0" prefWidth="419.0" styleClass="abstract" stylesheets="@../application.css" text="Label" wrapText="true" />
-    <WebView fx:id="body" layoutX="35.0" layoutY="265.0" prefHeight="316.0" prefWidth="734.0" styleClass="body" stylesheets="@../application.css" text="Label" wrapText="true" />
+    <WebView fx:id="bodyText" layoutX="35.0" layoutY="265.0" prefHeight="316.0" prefWidth="734.0" styleClass="body" stylesheets="@../application.css" />
 
 </AnchorPane>
