@@ -86,8 +86,12 @@ public class ArticleEditController {
 
 	@FXML
 	public void saveArticleToServer(){
+
 		this.editingArticle.setCategory(this.categoryInput.getSelectionModel().getSelectedItem());
-		this.editingArticle.titleProperty().set(this.titleInput.getText());
+		this.editingArticle.subtitleProperty().set(this.subtitleInput.getText().replaceAll("'", "\\\\'"));
+		this.editingArticle.bodyTextProperty().set(this.bodyInput.getHtmlText().replaceAll("'", "\\\\'"));
+		this.editingArticle.abstractTextProperty().set(this.abstractInput.getHtmlText().replaceAll("'", "\\\\'"));
+		
 		this.editingArticle.commit();
 		send();
 	}
