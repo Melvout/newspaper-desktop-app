@@ -15,6 +15,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
+import javafx.scene.web.WebEngine;
+import javafx.scene.web.WebView;
 
 /**
  * @author ÁngelLucas
@@ -31,6 +33,14 @@ public class ArticleDetailsController {
 		private Label articleTitle;
 		@FXML
 		private ImageView articleImage;
+		@FXML
+		private Label articleSubtitle;
+		@FXML
+		private Label articleCategory;
+		@FXML
+		private WebView articleAbstract;
+		@FXML
+		private WebView articleBody;
 
 		private final NewsReaderController newsReaderController;
 		
@@ -83,6 +93,14 @@ public class ArticleDetailsController {
 			//TODO complete this method
 
 			articleTitle.setText(this.article.getTitle());
+			articleSubtitle.setText(this.article.getSubtitle());
+			articleCategory.setText(this.article.getCategory());
 			articleImage.setImage(this.article.getImageData());
+
+			WebEngine webEngine = articleAbstract.getEngine();
+			webEngine.loadContent(this.article.getAbstractText());
+
+			webEngine = articleBody.getEngine();
+			webEngine.loadContent(this.article.getBodyText());
 		}
 }
