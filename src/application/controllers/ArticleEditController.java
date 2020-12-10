@@ -86,8 +86,17 @@ public class ArticleEditController {
 
 	@FXML
 	public void saveArticleToServer(){
+
+		System.out.println("Category >>> " + this.categoryInput.getSelectionModel().getSelectedItem());
+		System.out.println("Subtitle >>> " +this.subtitleInput.getText());
+		System.out.println("Body >>> " + this.bodyInput.getHtmlText());
+		System.out.println("Abstract >>> " + this.abstractInput.getHtmlText());
+
 		this.editingArticle.setCategory(this.categoryInput.getSelectionModel().getSelectedItem());
-		this.editingArticle.titleProperty().set(this.titleInput.getText());
+		this.editingArticle.subtitleProperty().set(this.subtitleInput.getText().replaceAll("'", "\\\\'"));
+		this.editingArticle.bodyTextProperty().set(this.bodyInput.getHtmlText().replaceAll("'", "\\\\'"));
+		this.editingArticle.abstractTextProperty().set(this.abstractInput.getHtmlText().replaceAll("'", "\\\\'"));
+
 		this.editingArticle.commit();
 		send();
 	}
@@ -127,7 +136,7 @@ public class ArticleEditController {
 				Image image = controller.getImage();
 				if (image != null) {
 					editingArticle.setImage(image);
-					imageInput.setImage(image);
+					imageInput.setImage(image); // update the UI
 				}
 			} catch (Exception e) {
 				e.printStackTrace();
