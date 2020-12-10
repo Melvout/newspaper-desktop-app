@@ -79,8 +79,23 @@ public class NewsReaderController {
 		}
 	}
 
+	@FXML 
+	private void createArticle(ActionEvent event){
+		ArticleEditController articleEditController = new ArticleEditController(this);
+		articleEditController.setConnectionMannager(this.newsReaderModel.getConnectionManager());
+		articleEditController.setUsr(this.usr);
+
+		articleEditController.setArticle(null);
+
+		clearUI();
+
+		Button sourceButton = (Button)event.getSource();
+		sourceButton.getScene().setRoot(articleEditController.getContent());
+
+	}
+
 	@FXML
-	public void editArticle(ActionEvent event){
+	private void editArticle(ActionEvent event){
 		if(this.articlesList.getSelectionModel().getSelectedItem() != null){
 			ArticleEditController articleEditController = new ArticleEditController(this);
 			

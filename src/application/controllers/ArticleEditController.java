@@ -87,6 +87,8 @@ public class ArticleEditController {
 	@FXML
 	public void saveArticleToServer(){
 
+		this.editingArticle.titleProperty().set(this.titleInput.getText().replaceAll("'", "\\\\'"));
+
 		this.editingArticle.setCategory(this.categoryInput.getSelectionModel().getSelectedItem());
 		this.editingArticle.subtitleProperty().set(this.subtitleInput.getText().replaceAll("'", "\\\\'"));
 		this.editingArticle.bodyTextProperty().set(this.bodyInput.getHtmlText().replaceAll("'", "\\\\'"));
@@ -104,6 +106,12 @@ public class ArticleEditController {
 		
 		Button sourceButton = (Button) event.getSource();
 		sourceButton.getScene().setRoot(newsReaderController.getContent());
+	}
+
+	@FXML
+	private void saveLocally(){
+		this.write();
+
 	}
 
 	@FXML
@@ -201,7 +209,7 @@ public class ArticleEditController {
 		if( this.usr != null ){
 			this.editingArticle = (article != null) ? new ArticleEditModel(article) : new ArticleEditModel(usr);
 
-			updateUI();
+			if(article != null){ updateUI(); }
 		}
 	}
 

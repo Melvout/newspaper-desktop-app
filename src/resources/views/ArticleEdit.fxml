@@ -50,5 +50,10 @@
             <Font size="14.0" />
          </font>
       </Button>
+      <Button fx:id="saveLocallyButton" layoutX="577.0" layoutY="561.0" mnemonicParsing="false" onAction="#saveLocally" text="Save to file">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>
