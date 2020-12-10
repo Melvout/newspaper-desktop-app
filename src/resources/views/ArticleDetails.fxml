@@ -4,13 +4,14 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.web.WebView?>
 
 <AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
 
-
-      <JFXButton layoutX="25.0" layoutY="30.0" onAction="#backMainMenu" styleClass="btn-icon" stylesheets="@../application.css" />
-
-      <Label fx:id="articleTitle" alignment="TOP_LEFT" layoutX="25.0" layoutY="76.0" prefHeight="17.0" prefWidth="497.0" styleClass="title" stylesheets="@../application.css" text="Title" />
-   <ImageView fx:id="articleImage" fitHeight="206.0" fitWidth="309.0" layoutX="392.0" layoutY="30.0" pickOnBounds="true" preserveRatio="true" />
+    <JFXButton layoutX="25.0" layoutY="30.0" onAction="#backMainMenu" styleClass="btn-icon" stylesheets="@../application.css" />
+    <Label fx:id="articleTitle" alignment="TOP_LEFT" layoutX="25.0" layoutY="76.0" prefHeight="55.0" prefWidth="419.0" styleClass="title" stylesheets="@../application.css" text="Title" />
+    <ImageView fx:id="articleImage" fitHeight="206.0" fitWidth="309.0" layoutX="460.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true" />
+    <Label fx:id="articleAbstract" alignment="TOP_LEFT" layoutX="35.0" layoutY="149.0" prefHeight="89.0" prefWidth="419.0" styleClass="abstract" stylesheets="@../application.css" text="Label" wrapText="true" />
+    <WebView fx:id="body" layoutX="35.0" layoutY="265.0" prefHeight="316.0" prefWidth="734.0" styleClass="body" stylesheets="@../application.css" text="Label" wrapText="true" />
 
 </AnchorPane>

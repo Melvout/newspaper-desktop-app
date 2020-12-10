@@ -20,3 +20,11 @@
     -fx-text-fill: #010405;
     -fx-font-weight: bold;
 }
+
+.abstract {
+    -fx-font-size: 21px;
+}
+
+.body {
+    -fx-font-size: 18px;
+}
