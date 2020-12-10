@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.web.WebView?>
 
-<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="750.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <Label fx:id="articleTitle" alignment="TOP_LEFT" layoutX="304.0" layoutY="37.0" lineSpacing="1.1" prefHeight="169.0" prefWidth="221.0" styleClass="title" stylesheets="@../application.css" text="Title" wrapText="true" />
    <JFXListView fx:id="articlesList" layoutX="25.0" layoutY="37.0" onMouseClicked="#articleSelected" prefHeight="354.0" prefWidth="256.0" />
    <ImageView fx:id="articleImage" fitHeight="169.0" fitWidth="239.0" layoutX="537.0" layoutY="54.0" pickOnBounds="true" preserveRatio="true" />
