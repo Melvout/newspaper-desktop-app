@@ -56,3 +56,11 @@
 - [X] Back button which cancel everything
 - [X] Save a draft article to a file
 - [X] Send article to server
+
+---
+
+**Login form :**
+
+- [ ] Username input
+- [ ] Password input
+- [ ] Login button
