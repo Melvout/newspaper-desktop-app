@@ -49,14 +49,9 @@ public class NewsReaderController {
 	private ImageView articleImage;
 	@FXML
 	private WebView articleBody;
-
 	private Pane root;
-
 	private Article articleSelected;
-	final FileChooser fileChooser = new FileChooser();
 	
-
-
 	public NewsReaderController(){		
 		try{
 			FXMLLoader loader = new FXMLLoader(getClass().getResource(AppScenes.READER.getFxmlFile()));
@@ -79,43 +74,44 @@ public class NewsReaderController {
 		if(this.articlesList.getSelectionModel().getSelectedItem() != null){
 
 			ArticleDetailsController articleDetailsController = new ArticleDetailsController(this);
-			
 			articleDetailsController.setArticle(getCurrentFullArticle());
 			
-			//articleDetailsController.setArticle(this.articlesList.getSelectionModel().getSelectedItem());
-			
+			/* Open details page */
 			Button sourceButton = (Button)event.getSource();
 			sourceButton.getScene().setRoot(articleDetailsController.getContent());
 		}
 	}
 
-	@FXML 
+	@FXML
+	/* Method called when the create button is pressed */
 	private void createArticle(ActionEvent event){
+
 		ArticleEditController articleEditController = new ArticleEditController(this);
 		articleEditController.setConnectionMannager(this.newsReaderModel.getConnectionManager());
 		articleEditController.setUsr(this.usr);
-
 		articleEditController.setArticle(null);
 
 		clearUI();
 
+		/* Open creating scene */
 		Button sourceButton = (Button)event.getSource();
 		sourceButton.getScene().setRoot(articleEditController.getContent());
 
 	}
 
 	@FXML
+	/* Method called when the edit button is pressed */
 	private void editArticle(ActionEvent event){
 		if(this.articlesList.getSelectionModel().getSelectedItem() != null){
+
 			ArticleEditController articleEditController = new ArticleEditController(this);
-			
 			articleEditController.setConnectionMannager(this.newsReaderModel.getConnectionManager());
 			articleEditController.setUsr(this.usr);
-
 			articleEditController.setArticle(getCurrentFullArticle());
 
 			clearUI();
 
+			/* Open editing scene */
 			Button sourceButton = (Button)event.getSource();
 			sourceButton.getScene().setRoot(articleEditController.getContent());
 		}
@@ -136,8 +132,15 @@ public class NewsReaderController {
 	}
 
 	@FXML
+	/* Method called when the load article button is pressed */
 	private void loadArticle(ActionEvent event){
 
+		/* Creating the fileChooser window and adding an extension filter */
+		FileChooser fileChooser = new FileChooser();
+		FileChooser.ExtensionFilter extensionFilter = new FileChooser.ExtensionFilter("NEWS files (*.news)", "*.news");
+		fileChooser.getExtensionFilters().add(extensionFilter);
+
+		/* Get the file and transform it into an article */
 		File articleFile;
 		articleFile = fileChooser.showOpenDialog(articleTitle.getScene().getWindow());
 		JsonObject articleJson = JsonArticle.readFile(articleFile.getPath());
@@ -149,19 +152,17 @@ public class NewsReaderController {
 			e.printStackTrace();
 		}
 
+		/* Open editing scene */
 		ArticleEditController articleEditController = new ArticleEditController(this);
-			
 		articleEditController.setConnectionMannager(this.newsReaderModel.getConnectionManager());
 		articleEditController.setUsr(this.usr);
-
 		articleEditController.setArticle(articleToload);
-
 		clearUI();
-
 		Button sourceButton = (Button)event.getSource();
 		sourceButton.getScene().setRoot(articleEditController.getContent());
 	}
 	
+	/* Method to update the UI of this page */
 	private void updateUI(){
 		articleTitle.setText(articleSelected.getTitle());
 		articleImage.setImage(articleSelected.getImageData());
@@ -169,6 +170,7 @@ public class NewsReaderController {
 		webEngine.loadContent(articleSelected.getAbstractText());
 	}
 
+	/* Method to clear the UI of this page*/
 	private void clearUI(){
 		articleTitle.setText("");
 		articleImage.setImage(null);
@@ -176,6 +178,7 @@ public class NewsReaderController {
 		webEngine.loadContent("");
 	}
 
+	/* Method to retrieve teh data from the server */
 	public void getData(){
 		newsReaderModel.retrieveData();
 		articlesList.setItems(newsReaderModel.getArticles());
@@ -192,10 +195,6 @@ public class NewsReaderController {
 			e.printStackTrace();
 		}
 		return articleToDisplay;		
-	}
-
-	public void addArticle(Article articleToAdd){
-		this.newsReaderModel.addArticle(articleToAdd);
 	}
 
 	/**
