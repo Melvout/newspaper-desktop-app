@@ -162,6 +162,14 @@ public class NewsReaderController {
 		sourceButton.getScene().setRoot(articleEditController.getContent());
 	}
 	
+	@FXML
+	/* Method to delete an article */
+	private void deleteArticle(){
+		if(this.articlesList.getSelectionModel().getSelectedItem() != null){
+			newsReaderModel.deleteArticle(this.articlesList.getSelectionModel().getSelectedItem());
+		}
+	}
+
 	/* Method to update the UI of this page */
 	private void updateUI(){
 		articleTitle.setText(articleSelected.getTitle());
