@@ -7,14 +7,14 @@
 ---
 
 - [x] List articles from server.
-- [ ] Filter by category
+- [X] Filter by category
 - [x] Display title, thumbnail and abstract when one article selected
 - [ ] Menu : 
   - [X] Load article from file button
   - [ ] Login button
   - [X] New article button
   - [X] Edit selected article button
-  - [ ] Delete selected article button
+  - [X] Delete selected article button
   - [ ] Exit / Logout button
 - [x] Go to articles details button
 
