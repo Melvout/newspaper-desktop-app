@@ -10,10 +10,10 @@
 - [ ] Filter by category
 - [x] Display title, thumbnail and abstract when one article selected
 - [ ] Menu : 
-  - [ ] Load article from file button
+  - [X] Load article from file button
   - [ ] Login button
-  - [ ] New article button
-  - [ ] Edit selected article button
+  - [X] New article button
+  - [X] Edit selected article button
   - [ ] Delete selected article button
   - [ ] Exit / Logout button
 - [x] Go to articles details button
@@ -24,10 +24,10 @@
 
 - [x] Article image
 - [x] Title
-- [ ] Subtitle
-- [ ] Category
-- [ ] Abstract ( html )
-- [ ] Body ( html )
+- [X] Subtitle
+- [X] Category
+- [X] Abstract ( html )
+- [X] Body ( html )
 - [x] Back button
 
 **Article creating / editing window ( ArticleEdit.fxml )**
@@ -36,23 +36,23 @@
 
 **Form to edit :**
 
-- [ ] Article image
-- [ ] Subtitle
-- [ ] Category
-- [ ] Abstract ( html )
-- [ ] Body ( html )
-- [ ] Back button which cancel everything
-- [ ] Save article to a file
-- [ ] Send article to server
+- [X] Article image
+- [X] Subtitle
+- [X] Category
+- [X] Abstract ( html )
+- [X] Body ( html )
+- [X] Back button which cancel everything
+- [X] Save article to a file
+- [X] Send article to server
 
 **Form to create :**
 
-- [ ] Article image
-- [ ] Title
-- [ ] Subtitle
-- [ ] Category
-- [ ] Abstract ( html )
-- [ ] Body ( html )
-- [ ] Back button which cancel everything
-- [ ] Save a draft article to a file
-- [ ] Send article to server
+- [X] Article image
+- [X] Title
+- [X] Subtitle
+- [X] Category
+- [X] Abstract ( html )
+- [X] Body ( html )
+- [X] Back button which cancel everything
+- [X] Save a draft article to a file
+- [X] Send article to server
