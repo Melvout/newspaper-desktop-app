@@ -11,12 +11,16 @@ import javax.json.Json;
 import javax.json.JsonObject;
 import javax.swing.Action;
 
+import com.jfoenix.controls.JFXComboBox;
+
 import javafx.stage.FileChooser;
 
 import application.news.Article;
+import application.news.Categories;
 import application.news.User;
 import application.utils.JsonArticle;
 import application.utils.exceptions.ErrorMalFormedArticle;
+import javafx.collections.transformation.FilteredList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -49,8 +53,14 @@ public class NewsReaderController {
 	private ImageView articleImage;
 	@FXML
 	private WebView articleBody;
+	@FXML
+	private JFXComboBox<Categories> categoryFilter;
+
 	private Pane root;
 	private Article articleSelected;
+
+	private FilteredList<Article> filteredArticleList;
+
 	
 	public NewsReaderController(){		
 		try{
@@ -62,7 +72,9 @@ public class NewsReaderController {
 		}
 	}
 
-	public void initialize(){ }
+	public void initialize(){
+		this.categoryFilter.getItems().addAll(newsReaderModel.getCategories());
+	}
 
 	public Pane getContent(){
 		return root;
@@ -121,13 +133,15 @@ public class NewsReaderController {
 	/* Method called when the user click on one of the article in the list. */
 	private void articleSelected(MouseEvent event){
 		this.articleSelected = this.articlesList.getSelectionModel().getSelectedItem();
-		updateUI();
-		/* if double click on article, goes to article details */
-		if (event.getClickCount() >= 2){
-			ArticleDetailsController articleDetailsController = new ArticleDetailsController(this);
-			articleDetailsController.setArticle(getCurrentFullArticle());
-			ListView<Article> sourceButton = (ListView<Article>)event.getSource(); // I'll try to fix this 
-			sourceButton.getScene().setRoot(articleDetailsController.getContent());
+		if( articleSelected != null){
+			updateUI();
+			/* if double click on article, goes to article details */
+			if (event.getClickCount() >= 2){
+				ArticleDetailsController articleDetailsController = new ArticleDetailsController(this);
+				articleDetailsController.setArticle(getCurrentFullArticle());
+				
+				this.articleTitle.getScene().setRoot(articleDetailsController.getContent());
+			}
 		}
 	}
 
@@ -170,6 +184,19 @@ public class NewsReaderController {
 		}
 	}
 
+	@FXML
+	private void categoryFilter(){
+		String filterValue = this.categoryFilter.getValue().toString();
+
+		if(filterValue.equals("All")){
+			this.filteredArticleList.setPredicate(null);
+		}
+		else{
+			this.filteredArticleList.setPredicate( article -> article.getCategory().equals(this.categoryFilter.getValue().toString()) );
+		}
+		this.articlesList.setItems(filteredArticleList);
+	}
+
 	/* Method to update the UI of this page */
 	private void updateUI(){
 		articleTitle.setText(articleSelected.getTitle());
@@ -189,7 +216,8 @@ public class NewsReaderController {
 	/* Method to retrieve teh data from the server */
 	public void getData(){
 		newsReaderModel.retrieveData();
-		articlesList.setItems(newsReaderModel.getArticles());
+		this.filteredArticleList = new FilteredList<Article>(newsReaderModel.getArticles());
+		articlesList.setItems(filteredArticleList);
 	}
 
 	/* Method to get full details of the currently selected article */
@@ -225,6 +253,7 @@ public class NewsReaderController {
 		this.newsReaderModel.setDummyData(false); //System is connected so dummy data are not needed
 		this.newsReaderModel.setConnectionManager(connection);
 		this.getData();
+		
 	}
 
 
