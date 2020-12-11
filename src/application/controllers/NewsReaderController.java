@@ -7,6 +7,10 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import javax.json.Json;
+import javax.json.JsonObject;
+import javax.swing.Action;
+
 import javafx.stage.FileChooser;
 
 import application.news.Article;
@@ -117,7 +121,6 @@ public class NewsReaderController {
 		}
 	}
 
-	
 	@FXML
 	/* Method called when the user click on one of the article in the list. */
 	private void articleSelected(MouseEvent event){
@@ -133,24 +136,30 @@ public class NewsReaderController {
 	}
 
 	@FXML
-	private void loadArticle(){
-		fileChooser.showOpenDialog(articleTitle.getScene().getWindow());
-	}
+	private void loadArticle(ActionEvent event){
 
-	public ArrayList<String> listFilesForFolder(final File folder){
-
-		ArrayList<String> result = new ArrayList<String>();
-		
-		for (final File fileEntry : folder.listFiles()){
-			if (fileEntry.isDirectory()){
-				listFilesForFolder(fileEntry);
-			} else {
-				result.add(fileEntry.getName());
-				System.out.println(fileEntry.getName());
-			}
+		File articleFile;
+		articleFile = fileChooser.showOpenDialog(articleTitle.getScene().getWindow());
+		JsonObject articleJson = JsonArticle.readFile(articleFile.getPath());
+		Article articleToload = null;
+		try {
+			articleToload = JsonArticle.jsonToArticle(articleJson);
+			System.out.println(">>> " + articleToload.getTitle());
+		} catch (ErrorMalFormedArticle e) {
+			e.printStackTrace();
 		}
 
-		return result;
+		ArticleEditController articleEditController = new ArticleEditController(this);
+			
+		articleEditController.setConnectionMannager(this.newsReaderModel.getConnectionManager());
+		articleEditController.setUsr(this.usr);
+
+		articleEditController.setArticle(articleToload);
+
+		clearUI();
+
+		Button sourceButton = (Button)event.getSource();
+		sourceButton.getScene().setRoot(articleEditController.getContent());
 	}
 	
 	private void updateUI(){
