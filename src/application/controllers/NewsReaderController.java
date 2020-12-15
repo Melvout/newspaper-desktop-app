@@ -74,6 +74,7 @@ public class NewsReaderController {
 
 	public void initialize(){
 		this.categoryFilter.getItems().addAll(newsReaderModel.getCategories());
+		this.categoryFilter.setValue(Categories.ALL);
 	}
 
 	public Pane getContent(){
@@ -185,6 +186,7 @@ public class NewsReaderController {
 	}
 
 	@FXML
+	/* Method called to filter the articles by category */
 	private void categoryFilter(){
 		String filterValue = this.categoryFilter.getValue().toString();
 
@@ -195,6 +197,12 @@ public class NewsReaderController {
 			this.filteredArticleList.setPredicate( article -> article.getCategory().equals(this.categoryFilter.getValue().toString()) );
 		}
 		this.articlesList.setItems(filteredArticleList);
+	}
+
+	@FXML
+	/* Method called to open the login view */
+	private void openLoginView(){
+		//TODO
 	}
 
 	/* Method to update the UI of this page */
