@@ -12,6 +12,9 @@ import application.news.Article;
 import application.news.Categories;
 import application.news.User;
 import application.utils.JsonArticle;
+import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXComboBox;
+import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -54,13 +57,17 @@ public class ArticleEditController {
 	@FXML
 	TextField subtitleInput;
 	@FXML
-	ComboBox<Categories> categoryInput;
+	JFXComboBox<Categories> categoryInput;
 	@FXML
 	HTMLEditor abstractInput;
 	@FXML
 	HTMLEditor bodyInput;
 	@FXML
 	ImageView imageInput;
+	@FXML
+	JFXButton saveLocallyButton;
+	@FXML
+	JFXButton sendButton;
 
 	public ArticleEditController(NewsReaderController newsReaderController) {
 

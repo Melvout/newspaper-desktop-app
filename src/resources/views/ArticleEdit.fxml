@@ -1,59 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.web.HTMLEditor?>
 
+<?import javafx.scene.control.TextField?>
 <AnchorPane prefHeight="750.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
 
-      <JFXButton layoutX="25.0" layoutY="30.0" onAction="#backMainMenu" styleClass="btn-icon" stylesheets="@../application.css" />
-      <ImageView fx:id="imageInput" fitHeight="111.0" fitWidth="146.0" layoutX="115.0" layoutY="36.0" onMouseClicked="#onImageClicked" pickOnBounds="true" preserveRatio="true" />
-      <TextField fx:id="titleInput" layoutX="416.0" layoutY="48.0" prefHeight="25.0" prefWidth="322.0" promptText="Article title" />
-      <TextField fx:id="subtitleInput" layoutX="416.0" layoutY="85.0" prefHeight="25.0" prefWidth="322.0" promptText="Article subtitle" />
-      <ComboBox fx:id="categoryInput" layoutX="416.0" layoutY="128.0" prefWidth="150.0" />
-      <Label alignment="CENTER_RIGHT" layoutX="354.0" layoutY="47.0" prefHeight="27.0" prefWidth="53.0" text="Title">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </Label>
-      <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="322.0" layoutY="84.0" prefHeight="27.0" prefWidth="85.0" text="Subtitle" textAlignment="RIGHT">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </Label>
-      <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="322.0" layoutY="127.0" prefHeight="27.0" prefWidth="85.0" text="Category" textAlignment="RIGHT">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </Label>
-      <HTMLEditor fx:id="abstractInput" htmlText="&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body contenteditable=&quot;true&quot;&gt;&lt;/body&gt;&lt;/html&gt;" layoutX="207.0" layoutY="164.0" prefHeight="188.0" prefWidth="531.0" />
-      <HTMLEditor fx:id="bodyInput" htmlText="&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body contenteditable=&quot;true&quot;&gt;&lt;/body&gt;&lt;/html&gt;" layoutX="207.0" layoutY="356.0" prefHeight="200.0" prefWidth="531.0" />
-      <Label alignment="CENTER_RIGHT" layoutX="83.0" layoutY="245.0" prefHeight="27.0" prefWidth="68.0" text="Abstract">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </Label>
-      <Label alignment="CENTER_RIGHT" layoutX="83.0" layoutY="454.0" prefHeight="27.0" prefWidth="68.0" text="Body">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </Label>
-      <Button fx:id="sendButton" layoutX="686.0" layoutY="561.0" mnemonicParsing="false" onAction="#saveArticleToServer" text="Send">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Button>
-      <Button fx:id="saveLocallyButton" layoutX="577.0" layoutY="561.0" mnemonicParsing="false" onAction="#saveLocally" text="Save to file">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Button>
+      <JFXButton layoutX="14.0" layoutY="14.0" onAction="#backMainMenu" styleClass="btn-icon" stylesheets="@../application.css" />
+      <ImageView fx:id="imageInput" fitHeight="213.0" fitWidth="376.0" layoutX="83.0" layoutY="422.0" onMouseClicked="#onImageClicked" pickOnBounds="true" preserveRatio="true" />
+      <Label alignment="CENTER_RIGHT" layoutX="84.0" layoutY="48.0" text="Title" />
+      <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="86.0" layoutY="145.0" text="Subtitle" textAlignment="RIGHT" />
+      <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="83.0" layoutY="246.0" text="Category" textAlignment="RIGHT" />
+      <HTMLEditor fx:id="abstractInput" htmlText="&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body contenteditable=&quot;true&quot;&gt;&lt;/body&gt;&lt;/html&gt;" layoutX="488.0" layoutY="72.0" prefHeight="188.0" prefWidth="578.0" />
+      <HTMLEditor fx:id="bodyInput" htmlText="&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body contenteditable=&quot;true&quot;&gt;&lt;/body&gt;&lt;/html&gt;" layoutX="488.0" layoutY="302.0" prefHeight="347.0" prefWidth="578.0" />
+      <Label alignment="CENTER_RIGHT" layoutX="488.0" layoutY="48.0" text="Abstract" />
+      <Label alignment="CENTER_RIGHT" layoutX="488.0" layoutY="278.0" text="Body" />
+      <HBox layoutX="867.0" layoutY="649.0" spacing="16.0">
+         <children>
+            <JFXButton fx:id="saveLocallyButton" onAction="#saveLocally" text="Export to file" />
+            <JFXButton fx:id="sendButton" onAction="#saveArticleToServer" text="Save article" />
+         </children>
+         <padding>
+            <Insets bottom="16.0" left="16.0" top="16.0" />
+         </padding>
+      </HBox>
+      <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="83.0" layoutY="374.0" text="Add an image" textAlignment="RIGHT" />
+      <JFXComboBox fx:id="categoryInput" layoutX="84.0" layoutY="270.0" prefHeight="44.0" prefWidth="252.0" />
+      <TextField fx:id="titleInput" layoutX="86.0" layoutY="71.0" prefHeight="44.0" prefWidth="376.0" />
+      <TextField fx:id="subtitleInput" layoutX="86.0" layoutY="168.0" prefHeight="44.0" prefWidth="376.0" />
    </children>
 </AnchorPane>
