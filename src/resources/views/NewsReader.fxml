@@ -13,11 +13,11 @@
    <JFXListView fx:id="articlesList" layoutX="246.0" layoutY="76.0" onMouseClicked="#articleSelected" prefHeight="624.0" prefWidth="256.0" />
    <ImageView fx:id="articleImage" fitHeight="169.0" fitWidth="239.0" layoutX="782.0" layoutY="69.0" pickOnBounds="true" preserveRatio="true" />
    <WebView fx:id="articleBody" layoutX="559.0" layoutY="350.0" prefHeight="348.0" prefWidth="467.0" />
-   <JFXButton id="btn_article_details" fx:id="readFullArticle" layoutX="45.0" layoutY="129.0" onAction="#openDetailsPage" prefHeight="44.0" prefWidth="148.0" styleClass="button" stylesheets="@../application.css" text="Read full article" />
-   <JFXButton id="btn_article_details" fx:id="editArticle" layoutX="45.0" layoutY="191.0" onAction="#editArticle" prefHeight="44.0" prefWidth="148.0" styleClass="button" stylesheets="@../application.css" text="Edit article" />
-   <JFXButton id="btn_article_details" fx:id="createArticle" layoutX="45.0" layoutY="251.0" onAction="#createArticle" prefHeight="44.0" prefWidth="148.0" styleClass="button" stylesheets="@../application.css" text="Create article" />
-   <JFXButton id="btn_article_details" fx:id="loadArticle" layoutX="45.0" layoutY="312.0" onAction="#loadArticle" prefHeight="44.0" prefWidth="148.0" styleClass="button" stylesheets="@../application.css" text="Load article" />
-   <JFXButton id="btn_article_details" fx:id="deleteArticle" layoutX="45.0" layoutY="374.0" onAction="#deleteArticle" prefHeight="44.0" prefWidth="148.0" styleClass="button" stylesheets="@../application.css" text="Delete article" />
+   <JFXButton id="btn_article_details" fx:id="readFullArticle" layoutX="45.0" layoutY="139.0" onAction="#openDetailsPage" prefHeight="44.0" prefWidth="148.0" styleClass="button" stylesheets="@../application.css" text="Read full article" />
+   <JFXButton id="btn_article_details" fx:id="editArticle" layoutX="45.0" layoutY="318.0" onAction="#editArticle" prefHeight="44.0" prefWidth="148.0" styleClass="button" stylesheets="@../application.css" text="Edit article" />
+   <JFXButton id="btn_article_details" fx:id="createArticle" layoutX="45.0" layoutY="201.0" onAction="#createArticle" prefHeight="44.0" prefWidth="148.0" styleClass="button" stylesheets="@../application.css" text="Create article" />
+   <JFXButton id="btn_article_details" fx:id="loadArticle" layoutX="45.0" layoutY="257.0" onAction="#loadArticle" prefHeight="44.0" prefWidth="148.0" styleClass="button" stylesheets="@../application.css" text="Load article" />
+   <JFXButton id="btn_article_details" fx:id="deleteArticle" layoutX="45.0" layoutY="381.0" onAction="#deleteArticle" prefHeight="44.0" prefWidth="148.0" styleClass="button" stylesheets="@../application.css" text="Delete article" />
    <JFXComboBox fx:id="categoryFilter" layoutX="45.0" layoutY="469.0" onAction="#categoryFilter" prefHeight="36.0" prefWidth="148.0" />
    <JFXButton id="btn_article_details" fx:id="loginButton" layoutX="45.0" layoutY="75.0" onAction="#openLoginView" prefHeight="44.0" prefWidth="148.0" styleClass="button" stylesheets="@../application.css" text="Login" />
 </AnchorPane>

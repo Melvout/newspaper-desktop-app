@@ -11,10 +11,11 @@ import javax.json.Json;
 import javax.json.JsonObject;
 import javax.swing.Action;
 
+import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 
 import javafx.stage.FileChooser;
-
+import javafx.stage.Modality;
 import application.news.Article;
 import application.news.Categories;
 import application.news.User;
@@ -24,6 +25,7 @@ import javafx.collections.transformation.FilteredList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
@@ -33,9 +35,12 @@ import javafx.scene.layout.Pane;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
+import javafx.stage.Window;
 import serverConection.ConnectionManager;
 import application.AppScenes;
 import application.models.NewsReaderModel;
+import javafx.scene.Node;
 
 /**
  * @author ÁngelLucas
@@ -44,7 +49,7 @@ import application.models.NewsReaderModel;
 public class NewsReaderController {
 
 	private NewsReaderModel newsReaderModel = new NewsReaderModel();
-	private User usr;
+	private User usr = null;
 	@FXML
 	private Label articleTitle;
 	@FXML
@@ -55,6 +60,10 @@ public class NewsReaderController {
 	private WebView articleBody;
 	@FXML
 	private JFXComboBox<Categories> categoryFilter;
+	@FXML
+	private JFXButton deleteArticle;
+	@FXML
+	private JFXButton editArticle;
 
 	private Pane root;
 	private Article articleSelected;
@@ -75,6 +84,10 @@ public class NewsReaderController {
 	public void initialize(){
 		this.categoryFilter.getItems().addAll(newsReaderModel.getCategories());
 		this.categoryFilter.setValue(Categories.ALL);
+		if(this.usr == null ){
+			deleteArticle.setDisable(true);
+			editArticle.setDisable(true);
+		}
 	}
 
 	public Pane getContent(){
@@ -162,7 +175,6 @@ public class NewsReaderController {
 		Article articleToload = null;
 		try {
 			articleToload = JsonArticle.jsonToArticle(articleJson);
-			System.out.println(">>> " + articleToload.getTitle());
 		} catch (ErrorMalFormedArticle e) {
 			e.printStackTrace();
 		}
@@ -201,8 +213,30 @@ public class NewsReaderController {
 
 	@FXML
 	/* Method called to open the login view */
-	private void openLoginView(){
-		//TODO
+	private void openLoginView(ActionEvent event){
+		Scene parentScene = ((Node) event.getSource()).getScene();
+		FXMLLoader loader = null;
+		try{
+			loader = new FXMLLoader(getClass().getResource(AppScenes.LOGIN.getFxmlFile()));
+			LoginController loginController = new LoginController(this);
+			loginController.setConnectionManager(this.newsReaderModel.getConnectionManager());
+			loader.setController(loginController);
+			Pane root = loader.load();
+			Scene scene = new Scene(root);
+
+			scene.getStylesheets().add(getClass().getResource("/resources/application.css").toExternalForm());
+			Window parentStage = parentScene.getWindow();
+			Stage stage = new Stage();
+			stage.initOwner(parentStage);
+			stage.setScene(scene);
+			stage.initStyle(StageStyle.UNDECORATED);
+			stage.initModality(Modality.WINDOW_MODAL);
+			stage.show();
+		}
+		catch(Exception e){
+			e.printStackTrace();
+		}
+
 	}
 
 	/* Method to update the UI of this page */
@@ -253,15 +287,18 @@ public class NewsReaderController {
 	 */
 	public void setUsr(User usr) {
 		this.usr = usr;
+
 		//Reload articles
-		//TODO Update UI
+		this.getData();
+		deleteArticle.setDisable(false);
+		editArticle.setDisable(false);
+
 	}
 
 	public void setConnectionManager (ConnectionManager connection){
 		this.newsReaderModel.setDummyData(false); //System is connected so dummy data are not needed
 		this.newsReaderModel.setConnectionManager(connection);
 		this.getData();
-		
 	}
 
 

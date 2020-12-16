@@ -1,12 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-
-
-<AnchorPane fx:id="loginWindow"
-            prefHeight="294.0" prefWidth="404.0"
-            xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="application.controllers.LoginController">
-   
+<AnchorPane fx:id="loginWindow" prefHeight="294.0" prefWidth="404.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label layoutX="61.0" layoutY="87.0" text="Username">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="62.0" layoutY="169.0" prefHeight="25.0" prefWidth="72.0" text="Password">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <TextField fx:id="usernameInput" layoutX="160.0" layoutY="87.0" promptText="username" />
+      <TextField fx:id="passwordInput" layoutX="160.0" layoutY="169.0" promptText="password" />
+      <JFXButton fx:id="submitButton" buttonType="RAISED" layoutX="255.0" layoutY="237.0" onAction="#submitForm" text="Submit" />
+      <JFXButton buttonType="RAISED" layoutX="183.0" layoutY="237.0" onAction="#cancel" text="Cancel" />
+   </children>
 </AnchorPane>

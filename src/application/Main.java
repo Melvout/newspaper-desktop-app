@@ -23,16 +23,17 @@ public class Main extends Application {
 		Properties prop = buildServerProperties();
 		ConnectionManager connection = new ConnectionManager(prop);
 		// Connecting as public (anonymous) for your group
-		connection.setAnonymousAPIKey("DEV_TEAM_13313");
+		connection.setAnonymousAPIKey("");
+		//connection.setAnonymousAPIKey("DEV_TEAM_13313");
 		newsReaderController.setConnectionManager(connection);
 
 		/* Login without login form: */
-		connection.login("us_1_3", "1331");
+		//connection.login("us_1_3", "1331");
 		
 		// User: Reader2 and password "reader2"
-		String idUser = connection.getIdUser();
-		User user = new User ("Reader2", Integer.parseInt(idUser));
-		newsReaderController.setUsr(user);
+		//String idUser = connection.getIdUser();
+		//User user = new User ("Reader2", Integer.parseInt(idUser));
+		//newsReaderController.setUsr(user);
 
 		} catch (AuthenticationError e){
 			e.printStackTrace();

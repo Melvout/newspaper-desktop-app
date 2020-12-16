@@ -64,7 +64,7 @@ public class LoginModel {
 	 * @param passwd password for the user
 	 * @return return the user if user id and password are correct. In other case return null
 	 */
-	final User validateUser (String login, String passwd){
+	final public User validateUser (String login, String passwd){
 		User usr = null;
 		if (this.dummyData){
 			usr = users.get(login+":"+passwd);	
