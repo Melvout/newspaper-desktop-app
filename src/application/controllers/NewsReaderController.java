@@ -182,22 +182,24 @@ public class NewsReaderController {
 		/* Get the file and transform it into an article */
 		File articleFile;
 		articleFile = fileChooser.showOpenDialog(articleTitle.getScene().getWindow());
-		JsonObject articleJson = JsonArticle.readFile(articleFile.getPath());
-		Article articleToload = null;
-		try {
-			articleToload = JsonArticle.jsonToArticle(articleJson);
-		} catch (ErrorMalFormedArticle e) {
-			e.printStackTrace();
-		}
+		if( articleFile != null ){
+			JsonObject articleJson = JsonArticle.readFile(articleFile.getPath());
+			Article articleToload = null;
+			try {
+				articleToload = JsonArticle.jsonToArticle(articleJson);
+			} catch (ErrorMalFormedArticle e) {
+				e.printStackTrace();
+			}
 
-		/* Open editing scene */
-		ArticleEditController articleEditController = new ArticleEditController(this);
-		articleEditController.setConnectionMannager(this.newsReaderModel.getConnectionManager());
-		articleEditController.setUsr(this.usr);
-		articleEditController.setArticle(articleToload);
-		clearUI();
-		Button sourceButton = (Button)event.getSource();
-		sourceButton.getScene().setRoot(articleEditController.getContent());
+			/* Open editing scene */
+			ArticleEditController articleEditController = new ArticleEditController(this);
+			articleEditController.setConnectionMannager(this.newsReaderModel.getConnectionManager());
+			articleEditController.setUsr(this.usr);
+			articleEditController.setArticle(articleToload);
+			clearUI();
+			Button sourceButton = (Button)event.getSource();
+			sourceButton.getScene().setRoot(articleEditController.getContent());
+		}
 	}
 	
 	@FXML
@@ -319,6 +321,4 @@ public class NewsReaderController {
 		this.newsReaderModel.setConnectionManager(connection);
 		this.getData();
 	}
-
-
 }

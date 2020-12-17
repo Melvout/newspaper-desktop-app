@@ -72,7 +72,7 @@
 
 - [X] Replace Login button by Quit when logged
 - [X] Gray out Read article / Edit article / Delete article if no article selected
-- [ ] Handle exception when "cancel" load article feature
+- [X] Handle exception when "cancel" load article feature
 - [ ] Prevent title edition in article edition
 - [ ] Return to main page after creating / editing article
 - [ ] Add a placeholder picture when creating article
