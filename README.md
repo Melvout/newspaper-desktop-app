@@ -73,8 +73,8 @@
 - [X] Replace Login button by Quit when logged
 - [X] Gray out Read article / Edit article / Delete article if no article selected
 - [X] Handle exception when "cancel" load article feature
-- [ ] Prevent title edition in article edition
-- [ ] Return to main page after creating / editing article
+- [X] Prevent title edition in article edition
+- [X] Return to main page after creating / editing article
 - [ ] Add a placeholder picture when creating article
 - [ ] Add feedback if wrong credentials when trying to log in
 - [ ] Gray out send article to server when creating article and not logged in

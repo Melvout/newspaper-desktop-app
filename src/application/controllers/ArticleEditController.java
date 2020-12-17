@@ -103,16 +103,12 @@ public class ArticleEditController {
 		
 		this.editingArticle.commit();
 		send();
+		returnToMainMenu();
 	}
 
 	@FXML
-	public void backMainMenu(ActionEvent event) {
-		System.out.println("Leaving editArticle scene...");
-
-		this.newsReaderController.getData();
-		
-		Button sourceButton = (Button) event.getSource();
-		sourceButton.getScene().setRoot(newsReaderController.getContent());
+	public void backMainMenu(){
+		returnToMainMenu();
 	}
 
 	@FXML
@@ -151,7 +147,6 @@ public class ArticleEditController {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-
 		}
 	}
 
@@ -216,8 +211,19 @@ public class ArticleEditController {
 		if( this.usr != null ){
 			this.editingArticle = (article != null) ? new ArticleEditModel(article) : new ArticleEditModel(usr);
 
-			if(article != null){ updateUI(); }
+			if(article != null){ 
+				updateUI(); 
+				System.out.println("ARTICLE EDITION");
+				this.titleInput.setDisable(true);
+			}
 		}
+	}
+
+	/* Return to main menu */
+	public void returnToMainMenu(){
+		System.out.println("Leaving editArticle scene...");
+		this.newsReaderController.getData();
+		root.getScene().setRoot(newsReaderController.getContent());
 	}
 
 	public void updateUI(){
@@ -229,6 +235,7 @@ public class ArticleEditController {
 		this.abstractInput.setHtmlText(this.editingArticle.getAbstractText());
 	}
 	
+
 	/**
 	 * Save an article to a file in a json format
 	 * Article must have a title
@@ -240,11 +247,11 @@ public class ArticleEditController {
 		String name = this.getArticle().getTitle().replaceAll("\\||/|\\\\|:|\\?","");
 		String fileName ="saveNews//"+name+".news";
 		JsonObject data = JsonArticle.articleToJson(this.getArticle());
-		  try (FileWriter file = new FileWriter(fileName)) {
-	            file.write(data.toString());
-	            file.flush();
-	        } catch (IOException e) {
-	            e.printStackTrace();
-	        }
+		try (FileWriter file = new FileWriter(fileName)){
+			file.write(data.toString());
+			file.flush();
+	    }catch (IOException e){
+			e.printStackTrace();
+		}		
 	}
 }

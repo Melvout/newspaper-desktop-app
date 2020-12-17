@@ -122,8 +122,7 @@ public class JsonArticle {
 		if (imageData != null && !imageData.equals("null")) {
 			BufferedImage img = StringToBufferedImage(imageData);
 			if (img == null) {
-				System.err.println(
-						"Img da null con los siguentes datos: " + imageData + " id Articulo: " + result.getIdArticle());
+				//System.err.println("Img da null con los siguentes datos: " + imageData + " id Articulo: " + result.getIdArticle());
 			} else {
 				result.setImageData(img);
 			}
