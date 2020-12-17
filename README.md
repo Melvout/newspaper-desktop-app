@@ -75,7 +75,7 @@
 - [X] Handle exception when "cancel" load article feature
 - [X] Prevent title edition in article edition
 - [X] Return to main page after creating / editing article
-- [ ] Add a placeholder picture when creating article
+- [X] Add a placeholder picture when creating article
 - [ ] Add feedback if wrong credentials when trying to log in
 - [ ] Gray out send article to server when creating article and not logged in
 - [ ] Edit abstract and body in HTML or plain text ( only HTML for the moment )
