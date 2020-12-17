@@ -5,11 +5,8 @@ package application.controllers;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
 
-import javax.json.Json;
 import javax.json.JsonObject;
-import javax.swing.Action;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
@@ -64,6 +61,10 @@ public class NewsReaderController {
 	private JFXButton deleteArticle;
 	@FXML
 	private JFXButton editArticle;
+	@FXML
+	private JFXButton readFullArticle;
+	@FXML
+	private JFXButton loginButton;
 
 	private Pane root;
 	private Article articleSelected;
@@ -84,10 +85,10 @@ public class NewsReaderController {
 	public void initialize(){
 		this.categoryFilter.getItems().addAll(newsReaderModel.getCategories());
 		this.categoryFilter.setValue(Categories.ALL);
-		if(this.usr == null ){
-			deleteArticle.setDisable(true);
-			editArticle.setDisable(true);
-		}
+		
+		deleteArticle.setDisable(true);
+		editArticle.setDisable(true);
+		readFullArticle.setDisable(true);
 	}
 
 	public Pane getContent(){
@@ -148,7 +149,17 @@ public class NewsReaderController {
 	private void articleSelected(MouseEvent event){
 		this.articleSelected = this.articlesList.getSelectionModel().getSelectedItem();
 		if( articleSelected != null){
+
+			readFullArticle.setDisable(false); // activate read article button
+
+			/* Activate delete and edit button only if user is logged */
+			if( this.usr != null ){
+				deleteArticle.setDisable(false);
+				editArticle.setDisable(false);
+			}
+			
 			updateUI();
+
 			/* if double click on article, goes to article details */
 			if (event.getClickCount() >= 2){
 				ArticleDetailsController articleDetailsController = new ArticleDetailsController(this);
@@ -214,29 +225,37 @@ public class NewsReaderController {
 	@FXML
 	/* Method called to open the login view */
 	private void openLoginView(ActionEvent event){
-		Scene parentScene = ((Node) event.getSource()).getScene();
-		FXMLLoader loader = null;
-		try{
-			loader = new FXMLLoader(getClass().getResource(AppScenes.LOGIN.getFxmlFile()));
-			LoginController loginController = new LoginController(this);
-			loginController.setConnectionManager(this.newsReaderModel.getConnectionManager());
-			loader.setController(loginController);
-			Pane root = loader.load();
-			Scene scene = new Scene(root);
-
-			scene.getStylesheets().add(getClass().getResource("/resources/application.css").toExternalForm());
-			Window parentStage = parentScene.getWindow();
-			Stage stage = new Stage();
-			stage.initOwner(parentStage);
-			stage.setScene(scene);
-			stage.initStyle(StageStyle.UNDECORATED);
-			stage.initModality(Modality.WINDOW_MODAL);
-			stage.show();
+		/* if no user logged */
+		if( this.usr == null ){
+			Scene parentScene = ((Node) event.getSource()).getScene();
+			FXMLLoader loader = null;
+			try{
+				loader = new FXMLLoader(getClass().getResource(AppScenes.LOGIN.getFxmlFile()));
+				LoginController loginController = new LoginController(this);
+				loginController.setConnectionManager(this.newsReaderModel.getConnectionManager());
+				loader.setController(loginController);
+				Pane root = loader.load();
+				Scene scene = new Scene(root);
+	
+				scene.getStylesheets().add(getClass().getResource("/resources/application.css").toExternalForm());
+				Window parentStage = parentScene.getWindow();
+				Stage stage = new Stage();
+				stage.initOwner(parentStage);
+				stage.setScene(scene);
+				stage.initStyle(StageStyle.UNDECORATED);
+				stage.initModality(Modality.WINDOW_MODAL);
+				stage.show();
+			}
+			catch(Exception e){
+				e.printStackTrace();
+			}
 		}
-		catch(Exception e){
-			e.printStackTrace();
+		/* if user already logged */
+		else{
+			System.out.println("Closing app...");
+			Stage stage =(Stage) ((Node) event.getSource()).getScene().getWindow();
+			stage.close();
 		}
-
 	}
 
 	/* Method to update the UI of this page */
@@ -289,10 +308,10 @@ public class NewsReaderController {
 		this.usr = usr;
 
 		//Reload articles
-		this.getData();
-		deleteArticle.setDisable(false);
-		editArticle.setDisable(false);
+		readFullArticle.setDisable(true);
+		loginButton.setText("Quit");
 
+		this.getData();
 	}
 
 	public void setConnectionManager (ConnectionManager connection){

@@ -70,8 +70,8 @@
 
 **17/12/2020 TODO :**
 
-- [ ] Replace Login button by Logout when logged
-- [ ] Gray out Read article / Edit article / Delete article if no article selected
+- [X] Replace Login button by Quit when logged
+- [X] Gray out Read article / Edit article / Delete article if no article selected
 - [ ] Handle exception when "cancel" load article feature
 - [ ] Prevent title edition in article edition
 - [ ] Return to main page after creating / editing article
