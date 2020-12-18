@@ -76,6 +76,6 @@
 - [X] Prevent title edition in article edition
 - [X] Return to main page after creating / editing article
 - [X] Add a placeholder picture when creating article
+- [X] Gray out send article to server when creating article and not logged in
 - [ ] Add feedback if wrong credentials when trying to log in
-- [ ] Gray out send article to server when creating article and not logged in
 - [ ] Edit abstract and body in HTML or plain text ( only HTML for the moment )

@@ -200,7 +200,10 @@ public class ArticleEditController {
 	 * @param usr the usr to set
 	 */
 	public void setUsr(User usr){
-		this.usr = usr;		
+		this.usr = usr;	
+		if(this.usr == null ){
+			this.sendButton.setDisable(true);
+		}	
 	}
 
 	/**
