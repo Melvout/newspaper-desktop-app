@@ -14,17 +14,14 @@ import application.news.User;
 import application.utils.JsonArticle;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
-import com.jfoenix.controls.JFXTextField;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ButtonType;
-import javafx.scene.control.ComboBox;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -52,6 +49,8 @@ public class ArticleEditController {
 	private Pane root;
 	private final NewsReaderController newsReaderController;
 
+	private boolean isEditHtmlMode = true;
+
 	@FXML
 	TextField titleInput;
 	@FXML
@@ -68,6 +67,10 @@ public class ArticleEditController {
 	JFXButton saveLocallyButton;
 	@FXML
 	JFXButton sendButton;
+	@FXML
+	TextArea bodyInputPlainText;
+	@FXML
+	TextArea abstractInputPlainText;
 
 	public ArticleEditController(NewsReaderController newsReaderController) {
 
@@ -96,12 +99,7 @@ public class ArticleEditController {
 	@FXML
 	public void saveArticleToServer(){
 
-		this.editingArticle.titleProperty().set(this.titleInput.getText().replaceAll("'", "\\\\'"));
-
-		this.editingArticle.setCategory(this.categoryInput.getSelectionModel().getSelectedItem());
-		this.editingArticle.subtitleProperty().set(this.subtitleInput.getText().replaceAll("'", "\\\\'"));
-		this.editingArticle.bodyTextProperty().set(this.bodyInput.getHtmlText().replaceAll("'", "\\\\'"));
-		this.editingArticle.abstractTextProperty().set(this.abstractInput.getHtmlText().replaceAll("'", "\\\\'"));
+		saveDataToModel();
 		
 		this.editingArticle.commit();
 		send();
@@ -115,8 +113,9 @@ public class ArticleEditController {
 
 	@FXML
 	private void saveLocally(){
-		this.write();
 
+		saveDataToModel();
+		this.write();
 	}
 
 	@FXML
@@ -149,6 +148,59 @@ public class ArticleEditController {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+		}
+	}
+
+	@FXML
+	private void switchEditMode(){
+		System.out.println("switchEditMode");
+
+		/* If bodyInput is already visible */
+		if( this.isEditHtmlMode ){
+			this.isEditHtmlMode = false;
+
+			/* For body part */
+			this.bodyInput.setVisible(false);
+			this.editingArticle.bodyTextProperty().set(this.bodyInput.getHtmlText());
+			this.bodyInputPlainText.setText(this.editingArticle.getBodyText());
+			this.bodyInputPlainText.setVisible(true);
+
+			/* For abstract part */
+			this.abstractInput.setVisible(false);
+			this.editingArticle.abstractTextProperty().set(this.abstractInput.getHtmlText());
+			this.abstractInputPlainText.setText(this.editingArticle.getAbstractText());
+			this.abstractInputPlainText.setVisible(true);
+		}
+		else{
+			this.isEditHtmlMode = true;
+
+			/* For body part */
+			this.bodyInputPlainText.setVisible(false);
+			this.editingArticle.bodyTextProperty().set(this.bodyInputPlainText.getText());
+			this.bodyInput.setHtmlText(this.editingArticle.getBodyText());
+			this.bodyInput.setVisible(true);
+
+			/* For abstract part */
+			this.abstractInputPlainText.setVisible(false);
+			this.editingArticle.abstractTextProperty().set(this.abstractInputPlainText.getText());
+			this.abstractInput.setHtmlText(this.editingArticle.getAbstractText());
+			this.abstractInput.setVisible(true);
+		}
+	}
+
+	/* Save the data from the view to the model */
+	private void saveDataToModel(){
+		this.editingArticle.titleProperty().set(this.titleInput.getText().replaceAll("'", "\\\\'"));
+
+		this.editingArticle.setCategory(this.categoryInput.getSelectionModel().getSelectedItem());
+		this.editingArticle.subtitleProperty().set(this.subtitleInput.getText().replaceAll("'", "\\\\'"));
+		if(this.isEditHtmlMode){
+			this.editingArticle.bodyTextProperty().set(this.bodyInput.getHtmlText().replaceAll("'", "\\\\'"));
+			this.editingArticle.abstractTextProperty().set(this.abstractInput.getHtmlText().replaceAll("'", "\\\\'"));
+		}
+		else{
+			this.editingArticle.bodyTextProperty().set(this.bodyInputPlainText.getText().replaceAll("'", "\\\\'"));
+			this.editingArticle.abstractTextProperty().set(this.abstractInputPlainText.getText().replaceAll("'", "\\\\'"));
 		}
 	}
 

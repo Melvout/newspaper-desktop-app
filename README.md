@@ -78,4 +78,4 @@
 - [X] Add a placeholder picture when creating article
 - [X] Gray out send article to server when creating article and not logged in
 - [X] Add feedback if wrong credentials when trying to log in
-- [ ] Edit abstract and body in HTML or plain text ( only HTML for the moment )
+- [X] Edit abstract and body in HTML or plain text ( only HTML for the moment )
