@@ -1,18 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.text.Text?>
 <AnchorPane fx:id="loginWindow" prefHeight="294.0" prefWidth="404.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Label layoutX="77.0" layoutY="50.0" text="Username" />
       <Label layoutX="76.0" layoutY="127.0" prefHeight="25.0" prefWidth="72.0" text="Password" />
-      <TextField fx:id="usernameInput" layoutX="76.0" layoutY="74.0" prefHeight="44.0" prefWidth="252.0" />
-      <TextField fx:id="passwordInput" layoutX="76.0" layoutY="155.0" prefHeight="44.0" prefWidth="252.0" />
+      <TextField fx:id="usernameInput" layoutX="76.0" layoutY="74.0" onMouseClicked="#onInput" prefHeight="44.0" prefWidth="252.0" />
+      <TextField fx:id="passwordInput" layoutX="76.0" layoutY="155.0" onMouseClicked="#onInput" prefHeight="44.0" prefWidth="252.0" />
       <JFXButton fx:id="submitButton" defaultButton="true" layoutX="76.0" layoutY="213.0" onAction="#submitForm" prefHeight="44.0" prefWidth="252.0" text="Log in" />
       <JFXButton cancelButton="true" layoutX="333.0" layoutY="14.0" onAction="#cancel" text="Cancel" />
+      <Label fx:id="feedbackLabel" alignment="CENTER" layoutX="146.0" layoutY="260.0" prefHeight="17.0" prefWidth="113.0" style="-fx-background-color: #c73636;" text="Wrong credentials" textAlignment="CENTER" textFill="WHITE" visible="false">
+         <padding>
+            <Insets bottom="4.0" left="6.0" right="6.0" top="4.0" />
+         </padding>
+      </Label>
    </children>
 </AnchorPane>

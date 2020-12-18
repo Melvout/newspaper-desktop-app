@@ -6,6 +6,7 @@ import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import serverConection.ConnectionManager;
@@ -28,6 +29,8 @@ public class LoginController {
 	private TextField passwordInput;
 	@FXML
 	private JFXButton submitButton;
+	@FXML
+	private Label feedbackLabel;
 	
 	private User loggedUsr = null;
 
@@ -50,13 +53,22 @@ public class LoginController {
 		if( !usernameInput.getText().equals("") && !passwordInput.getText().equals("") ){
 			Stage stage = (Stage) ((Node) action.getSource()).getScene().getWindow();
 			
-			System.out.println("ALLO");
+			
 			User user = this.loginModel.validateUser(usernameInput.getText(), passwordInput.getText());
 			if( user != null ){
 				this.newsReaderController.setUsr(user);
 				stage.close();
 			}
+			else{
+				System.out.println("Wrong password");
+				this.feedbackLabel.setVisible(true); // Set visible the feedback label
+			}
 		}
+	}
+
+	@FXML
+	private void onInput(){
+		this.feedbackLabel.setVisible(false); // Set invisible the feedback label
 	}
 
 	@FXML
