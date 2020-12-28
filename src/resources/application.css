@@ -5,6 +5,10 @@
     -fx-font-size: 15px;
 }
 
+.button:disabled{
+    -fx-background-color: #1a67e39d;
+}
+
 .btn-icon {
     -fill: #1A67E3;
     -size: 24;
