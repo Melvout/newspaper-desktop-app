@@ -17,23 +17,23 @@
    <WebView fx:id="articleBody" layoutX="559.0" layoutY="230.0" prefHeight="306.0" prefWidth="518.0" />
    <JFXButton id="btn_article_details" fx:id="readFullArticle" layoutX="940.0" layoutY="549.0" onAction="#openDetailsPage" prefHeight="44.0" prefWidth="137.0" styleClass="button" stylesheets="@../application.css" text="Read article" />
    <JFXComboBox fx:id="categoryFilter" layoutX="31.0" layoutY="111.0" onAction="#categoryFilter" prefHeight="44.0" prefWidth="252.0" />
-   <JFXButton id="btn_article_details" fx:id="loadArticle" layoutX="407.0" layoutY="111.0" onAction="#loadArticle" prefHeight="44.0" styleClass="button" stylesheets="@../application.css" text="Load article" />
-   <JFXButton id="btn_article_details" fx:id="loginButton" layoutX="1021.0" layoutY="14.0" onAction="#openLoginView" prefHeight="44.0" styleClass="button" stylesheets="@../application.css" text="Login" />
+   <JFXButton fx:id="loadArticle" layoutX="407.0" layoutY="111.0" onAction="#loadArticle" prefHeight="44.0" styleClass="button" stylesheets="@../application.css" text="Load article" />
+   <JFXButton fx:id="loginButton" layoutX="1021.0" layoutY="14.0" onAction="#openLoginView" prefHeight="44.0" styleClass="button" stylesheets="@../application.css" text="Login" />
    <Label layoutX="31.0" layoutY="182.0" prefHeight="17.0" prefWidth="392.0" text="Articles" />
    <Label layoutX="31.0" layoutY="85.0" prefHeight="17.0" prefWidth="214.0" text="Filter by Categories" />
    <HBox layoutX="145.0" layoutY="536.0" spacing="16.0">
       <children>
-         <JFXButton id="btn_article_details" fx:id="editArticle" onAction="#editArticle" styleClass="button" stylesheets="@../application.css" text="Edit article">
+         <JFXButton fx:id="editArticle" onAction="#editArticle" styleClass="button" stylesheets="@../application.css" text="Edit article">
             <HBox.margin>
                <Insets />
             </HBox.margin>
          </JFXButton>
-         <JFXButton id="btn_article_details" fx:id="createArticle" onAction="#createArticle" styleClass="button" stylesheets="@../application.css" text="Create article">
+         <JFXButton fx:id="createArticle" onAction="#createArticle" styleClass="button" stylesheets="@../application.css" text="Create article">
             <HBox.margin>
                <Insets />
             </HBox.margin>
          </JFXButton>
-         <JFXButton id="btn_article_details" fx:id="deleteArticle" onAction="#deleteArticle" styleClass="button" stylesheets="@../application.css" text="Delete article">
+         <JFXButton fx:id="deleteArticle" onAction="#deleteArticle" styleClass="button" stylesheets="@../application.css" text="Delete article">
             <HBox.margin>
                <Insets />
             </HBox.margin>
