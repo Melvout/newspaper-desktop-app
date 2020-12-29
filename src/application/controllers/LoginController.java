@@ -16,41 +16,34 @@ import application.models.LoginModel;
 
 
 
-public class LoginController {
-
-	private LoginModel loginModel = new LoginModel();
-	private NewsReaderController newsReaderController;
+public class LoginController{
 
 	@FXML
-	private TextField usernameInput;
-	@FXML
-	private TextField passwordInput;
+	private TextField usernameInput, passwordInput;
 	@FXML
 	private JFXButton submitButton;
 	@FXML
 	private Label feedbackLabel;
-	
+
+	private LoginModel loginModel = new LoginModel();
+	private NewsReaderController newsReaderController;
 	private User loggedUsr = null;
 
 	public LoginController (NewsReaderController newsReaderController){
 
 		this.newsReaderController = newsReaderController;
-	
-		//Uncomment next sentence to use data from server instead dummy data
-		//loginModel.setDummyData(false);
 	}
 	
-	User getLoggedUsr() {
+	User getLoggedUsr(){
 		return loggedUsr;
-		
 	}
 
 	@FXML
+	/* Function to submit the login form to the server */
 	private void submitForm(ActionEvent action){
 		
 		if( !usernameInput.getText().equals("") && !passwordInput.getText().equals("") ){
 			Stage stage = (Stage) ((Node) action.getSource()).getScene().getWindow();
-			
 			
 			User user = this.loginModel.validateUser(usernameInput.getText(), passwordInput.getText());
 			if( user != null ){
@@ -75,7 +68,7 @@ public class LoginController {
 		stage.close();
 	}
 		
-	void setConnectionManager (ConnectionManager connection) {
+	void setConnectionManager (ConnectionManager connection){
 		this.loginModel.setConnectionManager(connection);
 	}
 }
