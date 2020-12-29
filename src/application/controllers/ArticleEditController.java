@@ -83,8 +83,6 @@ public class ArticleEditController {
 		this.categoryInput.getItems().addAll(Categories.ECONOMY, Categories.INTERNATIONAL, Categories.NATIONAL, Categories.SPORTS, Categories.TECHNOLOGY);
 		Image image = new Image("images/noImage.jpg", true);
 		imageInput.setImage(image);
-		
-		this.sendButton.setDisable(true);
 	}
 
 	public Pane getContent(){
@@ -294,7 +292,11 @@ public class ArticleEditController {
 			else{
 				this.editingArticle = new ArticleEditModel(); // To be able to create an article and save it to a local file while not logged in.
 			}
-			
+		}
+
+		/* If creation mode we disable the send button at the beginning */
+		if(this.editingArticle.getTitle().equals("")){
+			this.sendButton.setDisable(true);
 		}
 	}
 
