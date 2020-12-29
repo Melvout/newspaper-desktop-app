@@ -5,8 +5,15 @@
     -fx-font-size: 15px;
 }
 
+.button-secondary {
+    -fx-background-color: #000000;
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 15px;
+}
+
 .button:disabled{
-    -fx-background-color: #1a67e39d;
+    -fx-background-color: #CCCCCC;
+    -fx-text-fill: #000000;
 }
 
 .btn-icon {
