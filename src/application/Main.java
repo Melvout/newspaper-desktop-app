@@ -9,10 +9,10 @@ import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import application.controllers.NewsReaderController;
 
-public class Main extends Application {
+public class Main extends Application{
 
 	@Override
-	public void start(Stage primaryStage) {
+	public void start(Stage primaryStage){
 
 		NewsReaderController newsReaderController = new NewsReaderController();
 
@@ -21,20 +21,10 @@ public class Main extends Application {
 		// Create properties for server connection
 		Properties prop = buildServerProperties();
 		ConnectionManager connection = new ConnectionManager(prop);
-		// Connecting as public (anonymous) for your group
 		connection.setAnonymousAPIKey("");
-		//connection.setAnonymousAPIKey("DEV_TEAM_13313");
 		newsReaderController.setConnectionManager(connection);
-
-		/* Login without login form: */
-		//connection.login("us_1_3", "1331");
-		
-		// User: Reader2 and password "reader2"
-		//String idUser = connection.getIdUser();
-		//User user = new User ("Reader2", Integer.parseInt(idUser));
-		//newsReaderController.setUsr(user);
-
-		} catch (AuthenticationError e){
+		} 
+		catch (AuthenticationError e){
 			e.printStackTrace();
 		} 
 
@@ -45,7 +35,7 @@ public class Main extends Application {
 		primaryStage.show();
 	}
 
-	public static void main(String[] args) {
+	public static void main(String[] args){
 		launch(args);
 	}
 	
