@@ -32,15 +32,7 @@
                   <Font size="14.0" />
                </font>
                <HBox.margin>
-                  <Insets />
-               </HBox.margin>
-            </Button>
-            <Button fx:id="btnPreviw" onAction="#onImagePreview" prefHeight="35.0" prefWidth="80.0" style="-fx-background-color: #8181F7;" text="Preview" textFill="#f2f2f2">
-               <font>
-                  <Font size="14.0" />
-               </font>
-               <HBox.margin>
-                  <Insets left="25.0" right="25.0" />
+                  <Insets right="40.0" />
                </HBox.margin>
             </Button>
             <Button fx:id="btnCancel" onAction="#onCancel" prefHeight="35.0" prefWidth="80.0" style="-fx-background-color: #8181F7;" text="Cancel" textFill="#f2f2f2">

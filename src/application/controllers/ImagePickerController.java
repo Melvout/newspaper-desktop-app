@@ -62,13 +62,12 @@ public class ImagePickerController {
     		 Path path = FileSystems.getDefault().getPath(
     				 selectedFile.getAbsolutePath());
     		 idImageURL.setText(path.toUri().toString());
-    	 }
+         }
+         imagePreview(); // preview the image directly after selecting it
     }
 
-    @FXML
-    void onImagePreview(ActionEvent event) {
-    	image = new Image(idImageURL.getText(),
-  			  false);
+    void imagePreview(){
+    	image = new Image(idImageURL.getText(),false);
         imgPreview.setImage(image);
     }
 
