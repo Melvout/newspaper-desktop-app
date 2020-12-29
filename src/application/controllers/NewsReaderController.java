@@ -267,6 +267,7 @@ public class NewsReaderController {
 		articleImage.setImage(null);
 		WebEngine webEngine = articleBody.getEngine();
 		webEngine.loadContent("");
+		this.readFullArticle.setDisable(true);
 	}
 
 	/* Method to retrieve teh data from the server */
