@@ -278,7 +278,16 @@ public class ArticleEditController {
 			}
 		}
 		else{
-			this.editingArticle = new ArticleEditModel(); // To be able to create an article and save it to a local file while not logged in.
+			System.out.println("ALLO");
+			if(article != null){ 
+				System.out.println(article.getTitle());
+				this.editingArticle = new ArticleEditModel(article); 
+				updateUI();
+			}
+			else{
+				this.editingArticle = new ArticleEditModel(); // To be able to create an article and save it to a local file while not logged in.
+			}
+			
 		}
 	}
 
