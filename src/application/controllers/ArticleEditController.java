@@ -21,6 +21,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
@@ -63,6 +64,8 @@ public class ArticleEditController {
 	JFXButton saveLocallyButton, sendButton, switchEditMode;
 	@FXML
 	TextArea bodyInputPlainText, abstractInputPlainText;
+	@FXML
+	Label exportFeedback;
 
 	public ArticleEditController(NewsReaderController newsReaderController) {
 
@@ -110,8 +113,8 @@ public class ArticleEditController {
 	/* Function to save the article locally */ 
 	private void saveLocally(){
 
-		saveDataToModel();
 		this.write();
+		this.exportFeedback.setVisible(true);
 	}
 
 	@FXML
@@ -323,7 +326,8 @@ public class ArticleEditController {
 	 * Article must have a title
 	 */
 	private void write() {
-		//TODO Consolidate all changes	
+		
+		saveDataToModel();	
 		this.editingArticle.commit();
 		//Removes special characters not allowed for filenames
 		String name = this.getArticle().getTitle().replaceAll("\\||/|\\\\|:|\\?","");
