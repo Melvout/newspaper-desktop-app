@@ -23,10 +23,10 @@
       <HTMLEditor fx:id="bodyInput" htmlText="&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body contenteditable=&quot;true&quot;&gt;&lt;/body&gt;&lt;/html&gt;" layoutX="488.0" layoutY="302.0" prefHeight="347.0" prefWidth="578.0" />
       <Label alignment="CENTER_RIGHT" layoutX="488.0" layoutY="48.0" text="Abstract" />
       <Label alignment="CENTER_RIGHT" layoutX="488.0" layoutY="278.0" text="Body" />
-      <HBox layoutX="867.0" layoutY="649.0" spacing="16.0">
+      <HBox layoutX="836.0" layoutY="649.0" spacing="16.0">
          <children>
-            <JFXButton fx:id="saveLocallyButton" onAction="#saveLocally" text="Export to file" />
-            <JFXButton fx:id="sendButton" onAction="#saveArticleToServer" text="Save article" />
+            <JFXButton fx:id="saveLocallyButton" onAction="#saveLocally" stylesheets="@../application.css" text="Export to file" />
+            <JFXButton fx:id="sendButton" onAction="#saveArticleToServer" stylesheets="@../application.css" text="Save article" />
          </children>
          <padding>
             <Insets bottom="16.0" left="16.0" top="16.0" />
@@ -38,6 +38,6 @@
       <TextField fx:id="subtitleInput" layoutX="86.0" layoutY="168.0" prefHeight="44.0" prefWidth="376.0" />
       <TextArea fx:id="bodyInputPlainText" layoutX="488.0" layoutY="302.0" prefHeight="347.0" prefWidth="578.0" visible="false" wrapText="true" />
       <TextArea fx:id="abstractInputPlainText" layoutX="488.0" layoutY="73.0" prefHeight="188.0" prefWidth="578.0" visible="false" wrapText="true" />
-      <JFXButton fx:id="switchEditMode" layoutX="488.0" layoutY="671.0" onAction="#switchEditMode" text="Plain text" />
+      <JFXButton fx:id="switchEditMode" layoutX="488.0" layoutY="671.0" onAction="#switchEditMode" stylesheets="@../application.css" text="Plain text" />
    </children>
 </AnchorPane>

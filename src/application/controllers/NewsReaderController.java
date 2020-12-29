@@ -207,6 +207,7 @@ public class NewsReaderController {
 	private void deleteArticle(){
 		if(this.articlesList.getSelectionModel().getSelectedItem() != null){
 			newsReaderModel.deleteArticle(this.articlesList.getSelectionModel().getSelectedItem());
+			clearUI();
 		}
 	}
 

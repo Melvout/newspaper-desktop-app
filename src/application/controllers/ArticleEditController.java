@@ -52,27 +52,17 @@ public class ArticleEditController {
 	private boolean isEditHtmlMode = true;
 
 	@FXML
-	TextField titleInput;
-	@FXML
-	TextField subtitleInput;
+	TextField titleInput, subtitleInput;
 	@FXML
 	JFXComboBox<Categories> categoryInput;
 	@FXML
-	HTMLEditor abstractInput;
-	@FXML
-	HTMLEditor bodyInput;
+	HTMLEditor abstractInput, bodyInput;
 	@FXML
 	ImageView imageInput;
 	@FXML
-	JFXButton saveLocallyButton;
+	JFXButton saveLocallyButton, sendButton, switchEditMode;
 	@FXML
-	JFXButton sendButton;
-	@FXML
-	TextArea bodyInputPlainText;
-	@FXML
-	TextArea abstractInputPlainText;
-	@FXML
-	JFXButton switchEditMode;
+	TextArea bodyInputPlainText, abstractInputPlainText;
 
 	public ArticleEditController(NewsReaderController newsReaderController) {
 
