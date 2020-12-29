@@ -22,25 +22,18 @@ import javafx.scene.web.WebView;
  * @author ÁngelLucas
  *
  */
-public class ArticleDetailsController {
+public class ArticleDetailsController{
 	
-	    private User usr;
-		private Article article;
-
-		private Pane root;
-
 		@FXML
-		private Label articleTitle;
+		private Label articleTitle, articleSubtitle, articleCategory;
 		@FXML
 		private ImageView articleImage;
 		@FXML
-		private Label articleSubtitle;
-		@FXML
-		private Label articleCategory;
-		@FXML
-		private WebView articleAbstract;
-		@FXML
-		private WebView articleBody;
+		private WebView articleAbstract, articleBody;
+
+		private Article article;
+		private Pane root;
+		private User usr;
 
 		private final NewsReaderController newsReaderController;
 		
@@ -71,8 +64,6 @@ public class ArticleDetailsController {
 			sourceButton.getScene().setRoot(newsReaderController.getContent());
 		}
 
-	    
-
 		/**
 		 * @param usr the usr to set
 		 */
@@ -89,8 +80,6 @@ public class ArticleDetailsController {
 		 */
 		void setArticle(Article article) {
 			this.article = article;
-
-			//TODO complete this method
 
 			articleTitle.setText(this.article.getTitle());
 			articleSubtitle.setText(this.article.getSubtitle());

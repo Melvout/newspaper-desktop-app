@@ -45,8 +45,6 @@ import javafx.scene.Node;
  */
 public class NewsReaderController {
 
-	private NewsReaderModel newsReaderModel = new NewsReaderModel();
-	private User usr = null;
 	@FXML
 	private Label articleTitle;
 	@FXML
@@ -58,20 +56,14 @@ public class NewsReaderController {
 	@FXML
 	private JFXComboBox<Categories> categoryFilter;
 	@FXML
-	private JFXButton deleteArticle;
-	@FXML
-	private JFXButton editArticle;
-	@FXML
-	private JFXButton readFullArticle;
-	@FXML
-	private JFXButton loginButton;
+	private JFXButton deleteArticle, editArticle, readFullArticle, loginButton;
 
+	private NewsReaderModel newsReaderModel = new NewsReaderModel();
+	private User usr = null;
 	private Pane root;
 	private Article articleSelected;
-
 	private FilteredList<Article> filteredArticleList;
 
-	
 	public NewsReaderController(){		
 		try{
 			FXMLLoader loader = new FXMLLoader(getClass().getResource(AppScenes.READER.getFxmlFile()));

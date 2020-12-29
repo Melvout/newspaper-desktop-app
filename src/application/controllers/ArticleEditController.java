@@ -68,23 +68,24 @@ public class ArticleEditController {
 
 		this.newsReaderController = newsReaderController;
 
-		try {
+		try{
 			FXMLLoader loader = new FXMLLoader(getClass().getResource(AppScenes.EDITOR.getFxmlFile()));
 			loader.setController(this);
 			root = loader.load();
-		} catch (IOException e) {
+		} 
+		catch (IOException e){
 			e.printStackTrace();
 		}
 	}
 
-	public void initialize() {
+	public void initialize(){
 		System.out.println("Entering editArticle scene...");
 		this.categoryInput.getItems().addAll(Categories.ECONOMY, Categories.INTERNATIONAL, Categories.NATIONAL, Categories.SPORTS, Categories.TECHNOLOGY);
 		Image image = new Image("images/noImage.jpg", true);
         imageInput.setImage(image);
 	}
 
-	public Pane getContent() {
+	public Pane getContent(){
 		return root;
 	}
 
@@ -94,6 +95,7 @@ public class ArticleEditController {
 		saveDataToModel();
 		
 		this.editingArticle.commit();
+
 		send();
 		returnToMainMenu();
 	}
@@ -111,7 +113,7 @@ public class ArticleEditController {
 	}
 
 	@FXML
-	public void onImageClicked(MouseEvent event) {
+	public void onImageClicked(MouseEvent event){
 		if (event.getClickCount() >= 2) {
 			Scene parentScene = ((Node) event.getSource()).getScene();
 			FXMLLoader loader = null;
@@ -121,7 +123,6 @@ public class ArticleEditController {
 				// Scene scene = new Scene(root, 570, 420);
 				Scene scene = new Scene(root);
 
-				
 				scene.getStylesheets().add(getClass().getResource("/resources/application.css").toExternalForm());
 				Window parentStage = parentScene.getWindow();
 				Stage stage = new Stage();
