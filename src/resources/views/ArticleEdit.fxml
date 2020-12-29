@@ -33,8 +33,8 @@
          </padding>
       </HBox>
       <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="83.0" layoutY="374.0" text="Add an image" textAlignment="RIGHT" />
-      <JFXComboBox fx:id="categoryInput" layoutX="84.0" layoutY="270.0" prefHeight="44.0" prefWidth="252.0" />
-      <TextField fx:id="titleInput" layoutX="86.0" layoutY="71.0" prefHeight="44.0" prefWidth="376.0" />
+      <JFXComboBox fx:id="categoryInput" layoutX="84.0" layoutY="270.0" onAction="#checkFormValidity" prefHeight="44.0" prefWidth="252.0" />
+      <TextField fx:id="titleInput" layoutX="86.0" layoutY="71.0" onKeyReleased="#checkFormValidity" prefHeight="44.0" prefWidth="376.0" />
       <TextField fx:id="subtitleInput" layoutX="86.0" layoutY="168.0" prefHeight="44.0" prefWidth="376.0" />
       <TextArea fx:id="bodyInputPlainText" layoutX="488.0" layoutY="302.0" prefHeight="347.0" prefWidth="578.0" visible="false" wrapText="true" />
       <TextArea fx:id="abstractInputPlainText" layoutX="488.0" layoutY="73.0" prefHeight="188.0" prefWidth="578.0" visible="false" wrapText="true" />

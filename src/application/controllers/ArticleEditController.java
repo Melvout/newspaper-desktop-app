@@ -82,7 +82,9 @@ public class ArticleEditController {
 		System.out.println("Entering editArticle scene...");
 		this.categoryInput.getItems().addAll(Categories.ECONOMY, Categories.INTERNATIONAL, Categories.NATIONAL, Categories.SPORTS, Categories.TECHNOLOGY);
 		Image image = new Image("images/noImage.jpg", true);
-        imageInput.setImage(image);
+		imageInput.setImage(image);
+		
+		this.sendButton.setDisable(true);
 	}
 
 	public Pane getContent(){
@@ -182,6 +184,16 @@ public class ArticleEditController {
 		}
 	}
 
+	@FXML
+	private void checkFormValidity(){
+		if(!this.titleInput.getText().isEmpty() && this.categoryInput.getSelectionModel().getSelectedItem() != null ){
+			this.sendButton.setDisable(false);
+		}
+		else{
+			this.sendButton.setDisable(true);
+		}
+	}
+
 	/* Save the data from the view to the model */
 	private void saveDataToModel(){
 		this.editingArticle.titleProperty().set(this.titleInput.getText().replaceAll("'", "\\\\'"));
@@ -238,7 +250,6 @@ public class ArticleEditController {
 	 */
 	public void setConnectionMannager(ConnectionManager connection) {
 		this.connection = connection;
-		//TODO enable send and back button
 	}
 
 	/**
