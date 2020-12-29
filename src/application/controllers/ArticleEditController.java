@@ -161,18 +161,14 @@ public class ArticleEditController {
 
 			/* For body part */
 			this.bodyInput.setVisible(false);
-			if(this.editingArticle != null){
-				this.editingArticle.bodyTextProperty().set(this.bodyInput.getHtmlText());
-				this.bodyInputPlainText.setText(this.editingArticle.getBodyText());
-			}
+			this.editingArticle.bodyTextProperty().set(this.bodyInput.getHtmlText());
+			this.bodyInputPlainText.setText(this.editingArticle.getBodyText());
 			this.bodyInputPlainText.setVisible(true);
 
 			/* For abstract part */
 			this.abstractInput.setVisible(false);
-			if(this.editingArticle != null){
-				this.editingArticle.abstractTextProperty().set(this.abstractInput.getHtmlText());
-				this.abstractInputPlainText.setText(this.editingArticle.getAbstractText());
-			}
+			this.editingArticle.abstractTextProperty().set(this.abstractInput.getHtmlText());
+			this.abstractInputPlainText.setText(this.editingArticle.getAbstractText());
 			this.abstractInputPlainText.setVisible(true);
 		}
 		else{
@@ -180,18 +176,14 @@ public class ArticleEditController {
 
 			/* For body part */
 			this.bodyInputPlainText.setVisible(false);
-			if(this.editingArticle != null){
-				this.editingArticle.bodyTextProperty().set(this.bodyInputPlainText.getText());
-				this.bodyInput.setHtmlText(this.editingArticle.getBodyText());
-			}
+			this.editingArticle.bodyTextProperty().set(this.bodyInputPlainText.getText());
+			this.bodyInput.setHtmlText(this.editingArticle.getBodyText());
 			this.bodyInput.setVisible(true);
 
 			/* For abstract part */
 			this.abstractInputPlainText.setVisible(false);
-			if(this.editingArticle != null){
-				this.editingArticle.abstractTextProperty().set(this.abstractInputPlainText.getText());
-				this.abstractInput.setHtmlText(this.editingArticle.getAbstractText());
-			}
+			this.editingArticle.abstractTextProperty().set(this.abstractInputPlainText.getText());
+			this.abstractInput.setHtmlText(this.editingArticle.getAbstractText());
 			this.abstractInput.setVisible(true);
 		}
 	}
