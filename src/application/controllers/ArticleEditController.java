@@ -89,7 +89,7 @@ public class ArticleEditController {
 
 	public void initialize() {
 		System.out.println("Entering editArticle scene...");
-		this.categoryInput.getItems().addAll(Categories.ALL, Categories.ECONOMY, Categories.INTERNATIONAL, Categories.NATIONAL, Categories.SPORTS, Categories.TECHNOLOGY);
+		this.categoryInput.getItems().addAll(Categories.ECONOMY, Categories.INTERNATIONAL, Categories.NATIONAL, Categories.SPORTS, Categories.TECHNOLOGY);
 		Image image = new Image("images/noImage.jpg", true);
         imageInput.setImage(image);
 	}
