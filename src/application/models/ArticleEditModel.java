@@ -46,6 +46,13 @@ public class ArticleEditModel {
 		addedChangeListener();
 	}
 
+	/* Added this constructor to be able to create an article while not logged in and then save it to a local file  */
+	public ArticleEditModel(){
+		original = new Article();
+		edited = new Article (original);
+		addedChangeListener();
+	}
+
 	//Getters and setters
 	
 	/**
