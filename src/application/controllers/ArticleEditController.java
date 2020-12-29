@@ -71,6 +71,8 @@ public class ArticleEditController {
 	TextArea bodyInputPlainText;
 	@FXML
 	TextArea abstractInputPlainText;
+	@FXML
+	JFXButton switchEditMode;
 
 	public ArticleEditController(NewsReaderController newsReaderController) {
 
@@ -153,11 +155,11 @@ public class ArticleEditController {
 
 	@FXML
 	private void switchEditMode(){
-		System.out.println("switchEditMode");
-
+		
 		/* If bodyInput is already visible */
 		if( this.isEditHtmlMode ){
 			this.isEditHtmlMode = false;
+			this.switchEditMode.setText("HTML");
 
 			/* For body part */
 			this.bodyInput.setVisible(false);
@@ -173,6 +175,7 @@ public class ArticleEditController {
 		}
 		else{
 			this.isEditHtmlMode = true;
+			this.switchEditMode.setText("Plain text");
 
 			/* For body part */
 			this.bodyInputPlainText.setVisible(false);

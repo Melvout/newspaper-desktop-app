@@ -36,8 +36,8 @@
       <JFXComboBox fx:id="categoryInput" layoutX="84.0" layoutY="270.0" prefHeight="44.0" prefWidth="252.0" />
       <TextField fx:id="titleInput" layoutX="86.0" layoutY="71.0" prefHeight="44.0" prefWidth="376.0" />
       <TextField fx:id="subtitleInput" layoutX="86.0" layoutY="168.0" prefHeight="44.0" prefWidth="376.0" />
-      <Label fx:id="switchEditMode" alignment="CENTER" contentDisplay="RIGHT" layoutX="488.0" layoutY="671.0" onMouseClicked="#switchEditMode" prefHeight="25.0" prefWidth="68.0" text="Plain text" textAlignment="RIGHT" />
       <TextArea fx:id="bodyInputPlainText" layoutX="488.0" layoutY="302.0" prefHeight="347.0" prefWidth="578.0" visible="false" wrapText="true" />
       <TextArea fx:id="abstractInputPlainText" layoutX="488.0" layoutY="73.0" prefHeight="188.0" prefWidth="578.0" visible="false" wrapText="true" />
+      <JFXButton fx:id="switchEditMode" layoutX="488.0" layoutY="671.0" onAction="#switchEditMode" text="Plain text" />
    </children>
 </AnchorPane>
