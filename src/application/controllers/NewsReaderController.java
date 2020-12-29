@@ -270,7 +270,7 @@ public class NewsReaderController {
 		this.readFullArticle.setDisable(true);
 	}
 
-	/* Method to retrieve teh data from the server */
+	/* Method to retrieve the data from the server */
 	public void getData(){
 		newsReaderModel.retrieveData();
 		this.filteredArticleList = new FilteredList<Article>(newsReaderModel.getArticles());
