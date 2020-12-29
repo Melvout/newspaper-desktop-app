@@ -239,6 +239,7 @@ public class ConnectionManager {
 						Logger.getGlobal().log(Level.SEVERE, e.getMessage());
 					}
 				}
+				// This was changed to make only one GET request when starting the app instead of a GET request per article.
 				/*
 				for (int i = 0; i< arryObj.size(); i++) {
 

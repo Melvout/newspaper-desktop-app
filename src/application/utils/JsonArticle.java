@@ -116,7 +116,7 @@ public class JsonArticle {
 
 		// Be careful. If key dosen't exists a null pointer exception will be raised
 		String imageData = articleData.getString(keys.get("thumbnail"), null);
-		if(imageData == null ){ imageData = articleData.getString(keys.get("Image"), null); }
+		if(imageData == null ){ imageData = articleData.getString(keys.get("Image"), null); } // This was changed to use thumbnail or image depending on what we need.
 
 		// Sometimes server return "null" as imageData -> a bug server
 		if (imageData != null && !imageData.equals("null")) {
