@@ -192,7 +192,7 @@ public class ArticleEditController {
 	@FXML
 	/* Function to enable the send button only if title and category are provided */
 	private void checkFormValidity(){
-		if(!this.titleInput.getText().isEmpty() && this.categoryInput.getSelectionModel().getSelectedItem() != null ){
+		if(!this.titleInput.getText().isEmpty() && this.categoryInput.getSelectionModel().getSelectedItem() != null && this.usr != null){
 			this.sendButton.setDisable(false);
 		}
 		else{
@@ -326,7 +326,7 @@ public class ArticleEditController {
 	 * Article must have a title
 	 */
 	private void write() {
-		
+
 		saveDataToModel();	
 		this.editingArticle.commit();
 		//Removes special characters not allowed for filenames
