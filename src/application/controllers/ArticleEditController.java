@@ -92,6 +92,7 @@ public class ArticleEditController {
 	}
 
 	@FXML
+	/* Function to send the article to the server */
 	public void saveArticleToServer(){
 
 		saveDataToModel();
@@ -108,6 +109,7 @@ public class ArticleEditController {
 	}
 
 	@FXML
+	/* Function to save the article locally */ 
 	private void saveLocally(){
 
 		saveDataToModel();
@@ -115,6 +117,7 @@ public class ArticleEditController {
 	}
 
 	@FXML
+	/* Function to add an image */
 	public void onImageClicked(MouseEvent event){
 		if (event.getClickCount() >= 2) {
 			Scene parentScene = ((Node) event.getSource()).getScene();
@@ -147,6 +150,7 @@ public class ArticleEditController {
 	}
 
 	@FXML
+	/* Function to switch between HTML or Plain text edition mode */
 	private void switchEditMode(){
 		
 		/* If bodyInput is already visible */
@@ -185,6 +189,7 @@ public class ArticleEditController {
 	}
 
 	@FXML
+	/* Function to enable the send button only if title and category are provided */
 	private void checkFormValidity(){
 		if(!this.titleInput.getText().isEmpty() && this.categoryInput.getSelectionModel().getSelectedItem() != null ){
 			this.sendButton.setDisable(false);
@@ -300,6 +305,7 @@ public class ArticleEditController {
 		root.getScene().setRoot(newsReaderController.getContent());
 	}
 
+	/* Function to update the UI */
 	public void updateUI(){
 		this.titleInput.setText(this.editingArticle.getTitle());
 		this.subtitleInput.setText(this.editingArticle.getSubtitle());
