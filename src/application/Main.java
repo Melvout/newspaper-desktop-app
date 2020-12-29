@@ -8,7 +8,6 @@ import serverConection.exceptions.AuthenticationError;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import application.controllers.NewsReaderController;
-import application.news.User;
 
 public class Main extends Application {
 

@@ -4,10 +4,8 @@
 package application.controllers;
 
 import java.io.IOException;
-
 import application.AppScenes;
 import application.news.Article;
-import application.news.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -33,8 +31,6 @@ public class ArticleDetailsController{
 
 		private Article article;
 		private Pane root;
-		private User usr;
-
 		private final NewsReaderController newsReaderController;
 		
 		public ArticleDetailsController(NewsReaderController newsReaderController){
@@ -62,17 +58,6 @@ public class ArticleDetailsController{
 		public void backMainMenu(ActionEvent event){
 			Button sourceButton = (Button)event.getSource();
 			sourceButton.getScene().setRoot(newsReaderController.getContent());
-		}
-
-		/**
-		 * @param usr the usr to set
-		 */
-		void setUsr(User usr) {
-			this.usr = usr;
-			if (usr == null) {
-				return; //Not logged user
-			}
-			//TODO Update UI information
 		}
 
 		/**
